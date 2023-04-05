@@ -1,0 +1,26 @@
+.icon_circle {
+  height: 1.625rem;
+  width: 1.625rem;
+  border: 0.5px solid #ffffff;
+  border-radius: 50px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon_circle:hover {
+  background: #ffae02;
+  border-radius: 50px;
+  border: none;
+}
+.text-allRight{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+text-align: center;
+/* identical to box height */
+
+
+color: rgba(255, 255, 255, 0.31)
+}

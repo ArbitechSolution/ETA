@@ -1,0 +1,31 @@
+.title-hero {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  color: #ffffff;
+}
+.btn-started {
+  background: #ffae02;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.btn-started:hover {
+  border: #ffae02 solid 1px;
+  color: #ffae02;
+}
+
+
+
+@media(max-width:500px){
+  .title-hero{
+    font-size: 40px;
+    text-align: center;
+  }
+  .mobile-button{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}

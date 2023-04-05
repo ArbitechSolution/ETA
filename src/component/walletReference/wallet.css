@@ -1,0 +1,56 @@
+.input-box {
+  /* width: 100%; */
+  height: auto;
+  background: rgba(172, 0, 165, 0.42);
+  border: 1px solid rgba(255, 174, 2, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.text-heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  /* line-height: 36px; */
+  /* identical to box height */
+
+  color: #ffffff;
+}
+.text-address {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  /* line-height: 36px; */
+  /* identical to box height */
+  color: #ffffff;
+}
+
+@media (max-width: 500px) {
+  .input-box {
+    display: flex;
+    justify-content: center !important;
+  }
+  .text-heading {
+    text-align: center !important;
+    font-size: 15px;
+  }
+  .text-address {
+    text-align: center !important;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .text-heading {
+    text-align: center;
+    font-size: 12px;
+  }
+  .text-address {
+    text-align: center;
+    font-size: 12px;
+    text-align: left;
+    /* padding: 0%; */
+  }
+}

@@ -1,0 +1,66 @@
+
+
+.text-round {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  /* line-height: 36px; */
+  /* identical to box height */
+
+  color: #ffae02;
+}
+
+
+
+.text-unit{
+  font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 20px;
+/* identical to box height */
+color: #FFFFFF;
+}
+
+.text-value{
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  /* identical to box height */
+  color: #FFFFFF;
+}
+.btn-wallet{
+  background: #FFAE02;
+border-radius: 5px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+height: 50px;
+/* line-height: 36px; */
+/* identical to box height */
+
+
+color: #FFFFFF;
+}
+.btn-wallet:hover{
+  border: #FFAE02 1px solid;
+  color: #FFAE02;
+  background: none;
+}
+
+@media(max-width:500px){
+  .mobile-responsive
+  {
+    margin-top: 20px ;
+  }
+}
+input, textarea {
+  background-color: #e7e7e7;
+  border: none !important;
+  border-radius: 5px;
+  width:80%;
+  height: 40px;
+}
