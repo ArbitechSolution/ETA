@@ -172,6 +172,7 @@ function WhatIsEta() {
               .send({ from: acc });
             toast.info("Transcation Succseefull");
           } else {
+            toast.info("You have insufficient USDT balance!");
             console.log("token lessx");
           }
         } else {

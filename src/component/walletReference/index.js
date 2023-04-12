@@ -79,6 +79,41 @@ function WalletRef() {
   };
 
   //Register Link
+  // const handleRegister = async () => {
+  //   try {
+  //     if (acc == "No Wallet") {
+  //       toast.info("Not Connected");
+  //     } else if (acc == "Wrong Network") {
+  //       toast.info("Wrong Network");
+  //     } else if (acc == "Connect Wallet") {
+  //       toast.info("Not Connected");
+  //     } else {
+  //       const web3 = window.web3;
+  //       const contract = new web3.eth.Contract(
+  //         contractAddressAbi,
+  //         contractAddress
+  //       );
+  //       if (!checkDeposit) {
+  //         let refDeposit = await contract.methods.userInfo(ref).call();
+  //         let deposit = refDeposit.totalDeposit;
+
+  //         if (parseFloat(deposit) > 0) {
+  //           await contract.methods.register(ref).send({ from: acc });
+  //           toast.success("Successfully Registered");
+  //         } else {
+  //           toast.error("Your Referral address is not applicable");
+  //         }
+  //       } else {
+  //         await contract.methods.register(ref).send({ from: acc });
+  //         toast.success("Successfully Registered");
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log("error", error);
+  //     toast.error("Registration Failed!");
+  //   }
+  // };
+
   const handleRegister = async () => {
     try {
       if (acc == "No Wallet") {
@@ -93,7 +128,11 @@ function WalletRef() {
           contractAddressAbi,
           contractAddress
         );
-        if (!checkDeposit) {
+        let defaultReferral = await contract.methods.defaultRefer().call();
+        if (ref === defaultReferral) {
+          await contract.methods.register(ref).send({ from: acc });
+          toast.success("Successfully Registered");
+        } else {
           let refDeposit = await contract.methods.userInfo(ref).call();
           let deposit = refDeposit.totalDeposit;
 
@@ -103,9 +142,6 @@ function WalletRef() {
           } else {
             toast.error("Your Referral address is not applicable");
           }
-        } else {
-          await contract.methods.register(ref).send({ from: acc });
-          toast.success("Successfully Registered");
         }
       }
     } catch (error) {

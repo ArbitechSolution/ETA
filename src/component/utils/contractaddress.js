@@ -1,4 +1,4 @@
-export const contractAddress = "0x865Dd6DAcA62D99fba06e4Ba1e50B539736BD19a";
+export const contractAddress = "0x586dE0ed24abE611c61fe6144E952515Df41551a";
 export const contractAddressAbi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -108,6 +108,13 @@ export const contractAddressAbi = [
   },
   {
     inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "TotalUSDACEEarned",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
     name: "TotalUSDSpent",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
@@ -115,7 +122,7 @@ export const contractAddressAbi = [
   },
   {
     inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "TotalUSDTreceived",
+    name: "TotalUSDTEarned",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
@@ -498,6 +505,16 @@ export const contractAddressAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "totalEarned",
+    outputs: [
+      { internalType: "uint256", name: "_TotalUSDTEarned", type: "uint256" },
+      { internalType: "uint256", name: "_TotalUSDACEEarned", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "totalTokenMint",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
@@ -553,6 +570,16 @@ export const contractAddressAbi = [
     type: "function",
   },
   {
+    inputs: [
+      { internalType: "address", name: "", type: "address" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    name: "userCount",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "address", name: "", type: "address" }],
     name: "userInfo",
     outputs: [
@@ -583,10 +610,58 @@ export const contractAddressAbi = [
     type: "function",
   },
   {
+    inputs: [
+      { internalType: "address", name: "", type: "address" },
+      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    name: "userReferral",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "userWithdrawETAToken",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "w_count",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "", type: "address" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    name: "withdrawHistoryOfUSDACE",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "", type: "address" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    name: "withdrawHistoryOfUSDT",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "", type: "address" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    name: "withdrawHistoryTime",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
 ];

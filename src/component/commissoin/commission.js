@@ -11,77 +11,181 @@ import {
   usdaceTokenAddAbi,
 } from "../utils/contractUsdaceToken";
 import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
-function Commission() {
-  const [refLevel, setRefLevel] = useState();
 
-  let acc = useSelector((state) => state.connect?.connection);
-  console.log(acc);
+function Commission() {
+  const [refLevel, setRefLevel] = useState([]);
+  const [commissionInfo, setCommissionInfo] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const acc = useSelector((state) => state.connect?.connection);
+
   const ReferralLevel = async () => {
+    const web3 = window.web3;
     try {
-    } catch (e) {}
+      if (acc === "No Wallet") {
+        console.log("No Wallet");
+      } else if (acc === "Wrong Network") {
+        console.log("Wrong Wallet");
+      } else if (acc === "Connect Wallet") {
+        console.log("Connect Wallet");
+      } else {
+        setIsLoading(true);
+        let contract = new web3.eth.Contract(
+          contractAddressAbi,
+          contractAddress
+        );
+        let counts = [];
+        for (let level = 1; level <= 11; level++) {
+          let count = await contract.methods.userCount(acc, level).call();
+          // console.log(typeof level);
+          counts.push(count);
+        }
+        setRefLevel(counts);
+        setIsLoading(false);
+      }
+    } catch (e) {
+      console.log(e);
+      setIsLoading(false);
+    }
   };
-  useEffect(() => {});
+  const commissionDetail = async () => {
+    const web3 = window.web3;
+    try {
+      if (acc === "No Wallet") {
+        console.log("No Wallet");
+      } else if (acc === "Wrong Network") {
+        console.log("Wrong Wallet");
+      } else if (acc === "Connect Wallet") {
+        console.log("Connect Wallet");
+      } else {
+        let contract = new web3.eth.Contract(
+          contractAddressAbi,
+          contractAddress
+        );
+        let commission = await contract.methods
+          .commissionInfo("0xC353bC8E1C4d3C6F4870D83262946E8C32e126b3")
+          .call();
+        console.log(JSON.stringify(commission));
+        const usdtCommission = web3.utils.fromWei(
+          String(commission.USDT_Commission)
+        );
+        const usdAceCommission = web3.utils.fromWei(
+          String(commission.USDACE_Commission)
+        );
+        const commissionInfo = [
+          String(commission[0]),
+          String(commission[1]),
+          usdtCommission,
+          usdAceCommission,
+        ];
+        console.log(commissionInfo);
+        setCommissionInfo(commission);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const userWithdraw = async () => {
+    const web3 = window.web3;
+    try {
+      if (acc === "No Wallet") {
+        console.log("No Wallet");
+      } else if (acc === "Wrong Network") {
+        console.log("Wrong Wallet");
+      } else if (acc === "Connect Wallet") {
+        console.log("Connect Wallet");
+      } else {
+        let contract = new web3.eth.Contract(
+          contractAddressAbi,
+          contractAddress
+        );
+        let commission = await contract.methods.userWithdrawETAToken.send();
+        // console.log(JSON.stringify(commission));
+        // const usdtCommission = web3.utils.fromWei(
+        //   String(commission.USDT_Commission)
+        // );
+        // const usdAceCommission = web3.utils.fromWei(
+        //   String(commission.USDACE_Commission)
+        // );
+        // const commissionInfo = [
+        //   String(commission[0]),
+        //   String(commission[1]),
+        //   usdtCommission,
+        //   usdAceCommission,
+        // ];
+        // console.log(commissionInfo);
+        // setCommissionInfo(commission);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    ReferralLevel();
+    commissionDetail();
+  }, [acc]);
 
   const data = [
     {
       icon: PolygonIcon,
       level: "Level 1",
-      value: 4,
+      value: refLevel[0] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 2",
-      value: 10,
+      value: refLevel[1] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 3",
-      value: 50,
+      value: refLevel[2] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 4",
-      value: 100,
+      value: refLevel[3] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 5",
-      value: 0,
+      value: refLevel[4] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 6",
-      value: 0,
+      value: refLevel[5] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 7",
-      value: 0,
+      value: refLevel[6] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 8",
-      value: 0,
+      value: refLevel[7] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 9",
-      value: 0,
+      value: refLevel[8] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 10",
-      value: 0,
+      value: refLevel[9] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Level 11",
-      value: 0,
+      value: refLevel[10] || 0,
     },
     {
       icon: PolygonIcon,
       level: "Total",
-      value: 164,
+      value: refLevel.reduce((total, count) => total + Number(count), 0),
     },
   ];
   return (
@@ -111,26 +215,42 @@ function Commission() {
               })}
             </div>
           </div>
-          <div className="col-md-5  ">
+          <div className="col-md-5 mt-3">
             <div className="row ">
               <div className="col-md-12 table-background">
                 <div className="row d-flex justify-content-center mt-4 mb-4">
-                  <div className="col-md-10 col-10 box-backgorund">
+                  <div className="col-md-10 col-10 box-backgorund mb-3">
                     <div className="d-flex justify-content-between">
                       <div className="p-2 text-unit">Units:</div>
-                      <div className="p-2 text-value  ">525 USDT</div>
+                      <div className="p-2 text-value  ">
+                        {commissionInfo[0] / 10 ** 18} USDT
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-10 col-10 box-backgorund mb-3">
+                    <div className="d-flex justify-content-between">
+                      <div className="p-2 text-unit">Units:</div>
+                      <div className="p-2 text-value  ">
+                        {commissionInfo[1] / 10 ** 18} USDACE
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-10 col-10">
                     <div className="d-grid gap-2 mt-3">
-                      <button className="btn btn-wallet" type="button">
+                      <button
+                        className="btn btn-wallet"
+                        type="button"
+                        onClick={() => {
+                          userWithdraw();
+                        }}
+                      >
                         Withdraw USDT
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-12 table-background mt-4">
+              {/* <div className="col-md-12 table-background mt-4">
                 <div className="row d-flex justify-content-center mt-4 mb-4">
                   <div className="col-md-10 col-10 box-backgorund">
                     <div className="d-flex justify-content-between">
@@ -146,7 +266,7 @@ function Commission() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -154,5 +274,4 @@ function Commission() {
     </div>
   );
 }
-
 export default Commission;
