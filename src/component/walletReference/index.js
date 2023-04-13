@@ -129,7 +129,11 @@ function WalletRef() {
           contractAddress
         );
         let defaultReferral = await contract.methods.defaultRefer().call();
-        if (ref === defaultReferral) {
+        let alreadyUser = await contract.methods.userInfo(acc).call();
+        if (alreadyUser != "0x0000000000000000000000000000000000000000") {
+          toast.error("You are already register");
+          console.log("Usr Info", alreadyUser);
+        } else if (ref === defaultReferral) {
           await contract.methods.register(ref).send({ from: acc });
           toast.success("Successfully Registered");
         } else {

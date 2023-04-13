@@ -14,7 +14,7 @@ import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
 
 function Commission() {
   const [refLevel, setRefLevel] = useState([]);
-  const [commissionInfo, setCommissionInfo] = useState(10);
+  const [commissionInfo, setCommissionInfo] = useState([0, 0]);
   const [isLoading, setIsLoading] = useState(false);
 
   const acc = useSelector((state) => state.connect?.connection);
@@ -62,9 +62,7 @@ function Commission() {
           contractAddressAbi,
           contractAddress
         );
-        let commission = await contract.methods
-          .commissionInfo("0xC353bC8E1C4d3C6F4870D83262946E8C32e126b3")
-          .call();
+        let commission = await contract.methods.commissionInfo(acc).call();
         console.log(JSON.stringify(commission));
         const usdtCommission = web3.utils.fromWei(
           String(commission.USDT_Commission)
@@ -94,28 +92,25 @@ function Commission() {
       } else if (acc === "Wrong Network") {
         console.log("Wrong Wallet");
       } else if (acc === "Connect Wallet") {
-        console.log("Connect Wallet");
+        toast.info("Connect wallet");
       } else {
         let contract = new web3.eth.Contract(
           contractAddressAbi,
           contractAddress
         );
-        let commission = await contract.methods.userWithdrawETAToken.send();
-        // console.log(JSON.stringify(commission));
-        // const usdtCommission = web3.utils.fromWei(
-        //   String(commission.USDT_Commission)
-        // );
-        // const usdAceCommission = web3.utils.fromWei(
-        //   String(commission.USDACE_Commission)
-        // );
-        // const commissionInfo = [
-        //   String(commission[0]),
-        //   String(commission[1]),
-        //   usdtCommission,
-        //   usdAceCommission,
-        // ];
-        // console.log(commissionInfo);
-        // setCommissionInfo(commission);
+
+        // console.log("Commission", commission);
+        let commission;
+        if (
+          (commissionInfo[0] === "0" || commissionInfo[0] === "NAN") &&
+          (commissionInfo[1] === "0" || commissionInfo[1] === "NAN")
+        ) {
+          toast.info("Your Commission is 0");
+        } else {
+          commission = await contract.methods
+            .claimedCommission()
+            .send({ from: acc });
+        }
       }
     } catch (e) {
       console.log(e);
@@ -124,6 +119,7 @@ function Commission() {
   useEffect(() => {
     ReferralLevel();
     commissionDetail();
+    // userWithdraw();
   }, [acc]);
 
   const data = [

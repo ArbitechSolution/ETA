@@ -384,7 +384,7 @@ function WhatIsEta() {
                         type="button"
                         onClick={buyUsdt}
                       >
-                        Withdraw all ETA to Wallet
+                        Buy ETA
                       </button>
                     </div>
                   </div>
@@ -421,7 +421,7 @@ function WhatIsEta() {
                         type="button"
                         onClick={buyUsdace}
                       >
-                        Withdraw all ETA to Wallet
+                        Buy ETA
                       </button>
                     </div>
                   </div>
