@@ -2,6 +2,7 @@ import React from "react";
 import Commission from "./commission";
 import CommissionTable from "./commissionTable";
 import TotalCommission from "./totalCommission";
+import TotalEarned from "./TotalEarned";
 
 function Index() {
   return (
@@ -9,7 +10,8 @@ function Index() {
       <div className="" id="commission">
         <Commission />
         <TotalCommission />
-        <CommissionTable />
+        <TotalEarned />
+        {/* <CommissionTable /> */}
       </div>
     </>
   );

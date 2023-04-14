@@ -13,11 +13,11 @@ function MainPage() {
     <>
       <Header />
       <div style={{ background: "#32065B" }}>
-        <Herosection  />
+        <Herosection />
         <WalletRef />
-        <WhatIsEta  />
-        <Commission/>
-        <EtaPortfolio/>
+        <WhatIsEta />
+        <Commission />
+        <EtaPortfolio />
         <Footer />
       </div>
     </>

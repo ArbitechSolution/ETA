@@ -63,7 +63,7 @@ function Commission() {
           contractAddress
         );
         let commission = await contract.methods.commissionInfo(acc).call();
-        console.log(JSON.stringify(commission));
+        // console.log(JSON.stringify(commission));
         const usdtCommission = web3.utils.fromWei(
           String(commission.USDT_Commission)
         );
@@ -76,7 +76,7 @@ function Commission() {
           usdtCommission,
           usdAceCommission,
         ];
-        console.log(commissionInfo);
+        // console.log(commissionInfo);
         setCommissionInfo(commission);
       }
     } catch (e) {
