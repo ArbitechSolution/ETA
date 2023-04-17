@@ -1,8 +1,6 @@
-export const contractAddress = "0x46Ead2ef3e2Ad8925185E4BCa2E098a1A6a867f7";
-export const contractAddressAbi = [
-	{
-		"inputs": [
-			{
+export const contractAddress = "0xB9e501fdF648493B86b307bc552B263C34f17129";
+export const contractAddressAbi = [{
+		"inputs": [{
 				"internalType": "address",
 				"name": "tokenAddress",
 				"type": "address"
@@ -24,13 +22,11 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_percentage",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "_percentage",
+			"type": "uint256"
+		}],
 		"name": "changeWithdrawPercentage",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -44,13 +40,11 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_referral",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "_referral",
+			"type": "address"
+		}],
 		"name": "register",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -63,8 +57,7 @@ export const contractAddressAbi = [
 	},
 	{
 		"anonymous": false,
-		"inputs": [
-			{
+		"inputs": [{
 				"indexed": true,
 				"internalType": "address",
 				"name": "previousOwner",
@@ -82,8 +75,7 @@ export const contractAddressAbi = [
 	},
 	{
 		"anonymous": false,
-		"inputs": [
-			{
+		"inputs": [{
 				"indexed": false,
 				"internalType": "address",
 				"name": "user",
@@ -100,13 +92,11 @@ export const contractAddressAbi = [
 		"type": "event"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "token",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "token",
+			"type": "uint256"
+		}],
 		"name": "reinvestETAToken",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -120,13 +110,11 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "newOwner",
+			"type": "address"
+		}],
 		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -147,8 +135,7 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -160,38 +147,31 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "buyer_address",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"name": "buyer_Count",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -208,19 +188,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "buyer_Token",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -232,19 +209,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "buyerRound",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -266,38 +240,31 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "buyerSellTotalToken",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "buyertimeCount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -314,19 +281,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "buyerToken_Price",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -338,57 +302,46 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "buyerTotalToken",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "_user",
+			"type": "address"
+		}],
 		"name": "checkbalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokens",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "_tokens",
+			"type": "uint256"
+		}],
 		"name": "checkPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "price",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "price",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "_SellerAddress",
 				"type": "address"
@@ -400,21 +353,18 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "checkRemainingToken",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "checkSellerOrder",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "uint256",
 				"name": "_price",
 				"type": "uint256"
@@ -429,35 +379,28 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "to",
+			"type": "address"
+		}],
 		"name": "checkUSDACE",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "commissionInfo",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "uint256",
 				"name": "USDT_Commission",
 				"type": "uint256"
@@ -472,8 +415,7 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "_user",
 				"type": "address"
@@ -485,8 +427,7 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "countBuyers",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "uint256[]",
 				"name": "",
 				"type": "uint256[]"
@@ -501,8 +442,7 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -514,135 +454,101 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "countSell",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"name": "cycle",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "cycleSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "defaultRefer",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "devAddress",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "endRound",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "ETAToken",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "contract IERC20",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "fixedPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "_user",
+			"type": "address"
+		}],
 		"name": "getETAWithdraw",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "uint256",
 				"name": "_token",
 				"type": "uint256"
@@ -664,8 +570,7 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "getPrice",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -680,8 +585,7 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "uint256",
 				"name": "_Tokens",
 				"type": "uint256"
@@ -723,174 +627,145 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "getPriceAfterTwoRunds",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "Details",
-				"type": "uint256[]"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256[]",
+			"name": "Details",
+			"type": "uint256[]"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "maxDeposit",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "maxToken",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_users",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "_users",
+			"type": "address"
+		}],
 		"name": "maxWithdrwa",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "minDeposit",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "mulplier",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "PreviousRound",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "referDepth",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "round",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "roundSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"name": "seller_Count",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -902,19 +777,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "SellTotalToken",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -931,66 +803,55 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "teamUsers",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "tokenPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "tokenPriceAfterTwoRounds",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "tokenPriceIncreament",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_address",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "_address",
+			"type": "address"
+		}],
 		"name": "TotalClaimed",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -1005,16 +866,13 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_address",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "_address",
+			"type": "address"
+		}],
 		"name": "totalEarned",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "uint256",
 				"name": "_TotalUSDTEarned",
 				"type": "uint256"
@@ -1029,8 +887,7 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -1042,19 +899,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "totalTokencycle",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -1066,242 +920,195 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "totalTokencyclePrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"name": "TotalTokenInRound",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "totalTokenMint",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"inputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"name": "totalTokenRound",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "totalUSDACECommission",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "TotalUSDACEEarned",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "totalUSDACESpent",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "TotalUSDSpent",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "totalUSDTCommission",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "TotalUSDTEarned",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "totalUSDTSpent",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "totalUser",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "USDACEToken",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "contract IERC20",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "USDTToken",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "contract IERC20",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1313,27 +1120,22 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "userCount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "userInfo",
-		"outputs": [
-			{
+		"outputs": [{
 				"internalType": "address",
 				"name": "referrer",
 				"type": "address"
@@ -1388,8 +1190,7 @@ export const contractAddressAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1406,19 +1207,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "userReferral",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"outputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1435,19 +1233,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "userSellPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1464,38 +1259,31 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "userSellToken",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
+		"inputs": [{
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		}],
 		"name": "w_count",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1507,19 +1295,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "withdrawHistoryOfUSDACE",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1531,19 +1316,16 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "withdrawHistoryOfUSDT",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
+		"inputs": [{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -1555,13 +1337,11 @@ export const contractAddressAbi = [
 			}
 		],
 		"name": "withdrawHistoryTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [{
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		}],
 		"stateMutability": "view",
 		"type": "function"
 	}
