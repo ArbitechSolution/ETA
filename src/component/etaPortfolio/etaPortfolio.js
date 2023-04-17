@@ -15,7 +15,8 @@ function EtaPortfolio() {
   const [roundNumber, setRoundNumber] = useState(0);
   const [spentUsd, setSpentUsd] = useState(0);
   const [receivedUsdt, setReceivedUsdt] = useState(0);
-  let acc = useSelector((state) => state.connect?.connection);
+  const [etaBal, setEtaBal] = useState(0)
+  let {acc} = useSelector((state) => state.connect);
   const usdSpend = async () => {
     const web3 = window.web3;
     try {
@@ -31,9 +32,11 @@ function EtaPortfolio() {
           contractAddressAbi,
           contractAddress
         );
-        let totalUsd = await contract.methods.TotalUSDSpent(acc).call();
-        totalUsd = web3.utils.fromWei(totalUsd);
-        console.log(totalUsd);
+        let ceheckBalance = await contract.methods.checkbalance(acc).call();
+        ceheckBalance = Number(web3.utils.fromWei(ceheckBalance)).toLocaleString();
+        setEtaBal(ceheckBalance)
+        let totalUsd = await contract.methods.totalUSDTSpent(acc).call();
+        totalUsd = Number(web3.utils.fromWei(totalUsd)).toLocaleString();
         setSpentUsd(totalUsd);
       }
     } catch (e) {
@@ -56,10 +59,10 @@ function EtaPortfolio() {
           contractAddress
         );
         let totalusdtReceived = await contract.methods
-          .TotalUSDTreceived(acc)
+          .TotalUSDTEarned(acc)
           .call();
-        totalusdtReceived = web3.utils.fromWei(totalusdtReceived);
-        console.log(totalusdtReceived);
+          console.log("totalusdtReceived", totalusdtReceived);
+        totalusdtReceived = Number(web3.utils.fromWei(totalusdtReceived)).toLocaleString();
         setReceivedUsdt(totalusdtReceived);
       }
     } catch (e) {
@@ -82,7 +85,7 @@ function EtaPortfolio() {
   useEffect(() => {
     usdSpend();
     usdtReceived();
-  }, []);
+  }, [acc]);
   useEffect(() => {
     getData();
   }, []);
@@ -101,24 +104,24 @@ function EtaPortfolio() {
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-ETA text-uppercase text-center p-2">
-            Current Round: <spam className="text-white">{roundNumber}</spam>
+            Current Round: <spam className="text-white">{Number(roundNumber)+1}</spam>
           </div>
         </div>
       </div>
       <div className="row d-flex justify-content-between mt-3">
         <div className="col-md-3 col-12 col-12 table-background mobile-space ">
           <div className=" text-value text-uppercase text-center p-2">
-            Total ETA Purchased : 1100
+            Total ETA Purchased<br/>{etaBal}
           </div>
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-value text-uppercase text-center p-2">
-            Total USD Spent : ${spentUsd}
+            Total USDT Spent<br/>${spentUsd}
           </div>
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-value text-uppercase text-center p-2">
-            Total USDT Received : ${receivedUsdt}
+            Total USDT Earned<br/>${receivedUsdt}
           </div>
         </div>
       </div>

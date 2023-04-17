@@ -7,17 +7,19 @@ import WhatIsEta from "../component/whatIsEta/index";
 import Commission from "../component/commissoin/index";
 import EtaPortfolio from "../component/etaPortfolio/index";
 import "./mainPage.css";
+import EtaWithdraw from "../component/ETAWithdraw/ETAWithdraw";
 
 function MainPage() {
   return (
     <>
       <Header />
       <div style={{ background: "#32065B" }}>
-        <Herosection  />
+        <Herosection />
         <WalletRef />
-        <WhatIsEta  />
-        <Commission/>
-        <EtaPortfolio/>
+        <WhatIsEta />
+        <Commission />
+        <EtaWithdraw/>
+        <EtaPortfolio />
         <Footer />
       </div>
     </>
