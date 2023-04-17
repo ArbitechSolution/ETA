@@ -10,7 +10,7 @@ function WalletRef() {
   const [ref, setRef] = useState("0x000000000000000000000000");
   const [refLink, setRefLink] = useState(`${window.location.href}`);
   const [checkDeposit, setCheckDeposit] = useState(false);
-  let acc = useSelector((state) => state.connect?.connection);
+  let {acc} = useSelector((state) => state.connect);
   console.log(acc);
 
   const refaddress = async () => {
@@ -129,17 +129,15 @@ function WalletRef() {
           contractAddress
         );
         let defaultReferral = await contract.methods.defaultRefer().call();
-        let alreadyUser = await contract.methods.userInfo(acc).call();
-        if (alreadyUser != "0x0000000000000000000000000000000000000000") {
+        let {referrer} = await contract.methods.userInfo(acc).call();
+        if (referrer != "0x0000000000000000000000000000000000000000") {
           toast.error("You are already register");
-          console.log("Usr Info", alreadyUser);
         } else if (ref === defaultReferral) {
           await contract.methods.register(ref).send({ from: acc });
           toast.success("Successfully Registered");
         } else {
           let refDeposit = await contract.methods.userInfo(ref).call();
           let deposit = refDeposit.totalDeposit;
-
           if (parseFloat(deposit) > 0) {
             await contract.methods.register(ref).send({ from: acc });
             toast.success("Successfully Registered");

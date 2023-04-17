@@ -43,8 +43,8 @@ function TotalCommission() {
       <div className="container">
         <div className="row">
           <div className="col-md-12 box-backgorund">
-            <div className="d-flex justify-content-between">
-              <div className="p-2 text-unit">Total Commission Earned:</div>
+            <div className="d-flex justify-content-center">
+              <div className="p-2 text-unit">Total Commission Earned</div>
               {/* <div className="p-2 text-value  ">{totalEarn[0]} USDT</div> */}
             </div>
           </div>

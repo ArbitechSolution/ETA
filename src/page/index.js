@@ -7,6 +7,7 @@ import WhatIsEta from "../component/whatIsEta/index";
 import Commission from "../component/commissoin/index";
 import EtaPortfolio from "../component/etaPortfolio/index";
 import "./mainPage.css";
+import EtaWithdraw from "../component/ETAWithdraw/ETAWithdraw";
 
 function MainPage() {
   return (
@@ -17,6 +18,7 @@ function MainPage() {
         <WalletRef />
         <WhatIsEta />
         <Commission />
+        <EtaWithdraw/>
         <EtaPortfolio />
         <Footer />
       </div>

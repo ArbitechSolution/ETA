@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./commission.css";
 import "../../App.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import PolygonIcon from "../../assets/images/Polygon.svg";
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
@@ -11,14 +11,17 @@ import {
   usdaceTokenAddAbi,
 } from "../utils/contractUsdaceToken";
 import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
-
+import {connectionAction} from "../../Redux/connection/actions"
 function Commission() {
   const [refLevel, setRefLevel] = useState([]);
   const [commissionInfo, setCommissionInfo] = useState([0, 0]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const acc = useSelector((state) => state.connect?.connection);
-
+  const {acc} = useSelector((state) => state.connect);
+  const dispatch = useDispatch()
+  const connectWallet = () => {
+      dispatch(connectionAction());
+    };
   const ReferralLevel = async () => {
     const web3 = window.web3;
     try {
@@ -35,7 +38,7 @@ function Commission() {
           contractAddress
         );
         let counts = [];
-        for (let level = 1; level <= 11; level++) {
+        for (let level = 1; level <= 10; level++) {
           let count = await contract.methods.userCount(acc, level).call();
           // console.log(typeof level);
           counts.push(count);
@@ -62,22 +65,11 @@ function Commission() {
           contractAddressAbi,
           contractAddress
         );
-        let commission = await contract.methods.commissionInfo(acc).call();
-        // console.log(JSON.stringify(commission));
-        const usdtCommission = web3.utils.fromWei(
-          String(commission.USDT_Commission)
-        );
-        const usdAceCommission = web3.utils.fromWei(
-          String(commission.USDACE_Commission)
-        );
-        const commissionInfo = [
-          String(commission[0]),
-          String(commission[1]),
-          usdtCommission,
-          usdAceCommission,
-        ];
-        // console.log(commissionInfo);
-        setCommissionInfo(commission);
+        let { 0: usdt, 1: usdac } = await contract.methods.TotalClaimed(acc).call();
+        let arr = []
+        arr.push(Number(web3.utils.fromWei(usdt)).toLocaleString());
+        arr.push(Number(web3.utils.fromWei(usdac)).toLocaleString())
+        setCommissionInfo(arr)
       }
     } catch (e) {
       console.log(e);
@@ -87,6 +79,7 @@ function Commission() {
   const userWithdraw = async () => {
     const web3 = window.web3;
     try {
+      console.log(commissionInfo[0] === 0);
       if (acc === "No Wallet") {
         console.log("No Wallet");
       } else if (acc === "Wrong Network") {
@@ -98,18 +91,26 @@ function Commission() {
           contractAddressAbi,
           contractAddress
         );
-
-        // console.log("Commission", commission);
         let commission;
         if (
-          (commissionInfo[0] === "0" || commissionInfo[0] === "NAN") &&
-          (commissionInfo[1] === "0" || commissionInfo[1] === "NAN")
-        ) {
+          (commissionInfo[0] == 0 ) &&(commissionInfo[1] == 0)) {
           toast.info("Your Commission is 0");
         } else {
-          commission = await contract.methods
-            .claimedCommission()
-            .send({ from: acc });
+          let maxWithdrwa = await contract.methods.maxWithdrwa(acc).call();
+          maxWithdrwa = Number(web3.utils.fromWei(maxWithdrwa))
+          let { 0: usdt} = await contract.methods.TotalClaimed(acc).call();
+          let totalUSDTCommission = await contract.methods.totalUSDTCommission(acc).call();
+          totalUSDTCommission = Number(web3.utils.fromWei(totalUSDTCommission))
+          let total = totalUSDTCommission + Number(web3.utils.fromWei(usdt))
+          if(total <= maxWithdrwa){
+            commission = await contract.methods
+              .claimedCommission()
+              .send({ from: acc });
+              commissionDetail()
+              connectWallet()
+          }else{
+            toast.error("your commission limit have exceded")
+          }
         }
       }
     } catch (e) {
@@ -175,11 +176,6 @@ function Commission() {
     },
     {
       icon: PolygonIcon,
-      level: "Level 11",
-      value: refLevel[10] || 0,
-    },
-    {
-      icon: PolygonIcon,
       level: "Total",
       value: refLevel.reduce((total, count) => total + Number(count), 0),
     },
@@ -200,7 +196,7 @@ function Commission() {
                     <div className="col-md-5 referral-box mt-2">
                       <div className="d-flex justify-content-between align-items-center text-justify">
                         <div className="ms-0 Polygon-icon">
-                          <img src={level.icon} className="img-fluid" alt="" />
+                          <img src={PolygonIcon} className="img-fluid" alt="" />
                         </div>
                         <div className="text-level">{level.level}</div>
                         <div className="text-value">{level.value}</div>
@@ -217,17 +213,17 @@ function Commission() {
                 <div className="row d-flex justify-content-center mt-4 mb-4">
                   <div className="col-md-10 col-10 box-backgorund mb-3">
                     <div className="d-flex justify-content-between">
-                      <div className="p-2 text-unit">Units:</div>
+                      <div className="p-2 text-unit">USDT</div>
                       <div className="p-2 text-value  ">
-                        {commissionInfo[0] / 10 ** 18} USDT
+                        {commissionInfo[0]} 
                       </div>
                     </div>
                   </div>
                   <div className="col-md-10 col-10 box-backgorund mb-3">
                     <div className="d-flex justify-content-between">
-                      <div className="p-2 text-unit">Units:</div>
+                      <div className="p-2 text-unit">USDACE</div>
                       <div className="p-2 text-value  ">
-                        {commissionInfo[1] / 10 ** 18} USDACE
+                        {commissionInfo[1]} 
                       </div>
                     </div>
                   </div>
@@ -240,7 +236,7 @@ function Commission() {
                           userWithdraw();
                         }}
                       >
-                        Withdraw USDT
+                        Withdraw Commission
                       </button>
                     </div>
                   </div>

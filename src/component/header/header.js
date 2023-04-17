@@ -5,7 +5,7 @@ import Logo from "../../assets/images/EstrellaTera_logo-01.svg";
 import "./header.css";
 function Header() {
   const dispatch = useDispatch();
-  let acc = useSelector((state) => state.connect?.connection);
+  let {acc, isWalletConnect} = useSelector((state) => state.connect);
   const connectWallet = () => {
     dispatch(connectionAction());
   };

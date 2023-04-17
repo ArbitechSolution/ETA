@@ -11,7 +11,7 @@ const TotalEarned = () => {
     },
   ]);
   const [totalCommEarn, setTotalCommEarn] = useState(0);
-  const acc = useSelector((state) => state.connect?.connection);
+  const {acc} = useSelector((state) => state.connect);
 
   useEffect(() => {
     const getTotalCommEarn = async () => {
@@ -29,10 +29,10 @@ const TotalEarned = () => {
             contractAddress
           );
           const commissionHistoryUSDT = await contract.methods
-            .TotalUSDTEarned(acc)
+            .totalUSDTCommission(acc)
             .call();
           const commissionHistoryUSACE = await contract.methods
-            .TotalUSDACEEarned(acc)
+            .totalUSDACECommission(acc)
             .call();
           const history = Object.keys(commissionHistory).map((key, index) => ({
             txid: key,
@@ -54,12 +54,11 @@ const TotalEarned = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 table-background">
-              <div className="table-responsive mt-3 mb-3">
+              <div className=" mt-3 mb-3">
                 <table className="table text-center">
                   <thead>
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Account</th>
+                      <th scope="col">Address</th>
                       <th scope="col">USDT Earned</th>
                       <th scope="col">USDACE Earned</th>
                     </tr>
@@ -68,7 +67,6 @@ const TotalEarned = () => {
                     {commissionHistory.map((data, index) => {
                       return (
                         <tr key={index}>
-                          <td>{index + 1}</td>
                           <td>{acc}</td>
                           <td>${data.usdtValue}</td>
                           <td>${data.usdaceValue}</td>

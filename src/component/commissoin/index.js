@@ -11,7 +11,7 @@ function Index() {
         <Commission />
         <TotalCommission />
         <TotalEarned />
-        {/* <CommissionTable /> */}
+        <CommissionTable />
       </div>
     </>
   );
