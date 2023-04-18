@@ -11,15 +11,17 @@
   font-style: italic;
   font-weight: 700;
   font-size: 64px;
-  color: #ffae02;
+  color: #33A8DF;
 }
 .box-backgorund {
-  background: #953659;
+  background: #33a8df 50%;
+  
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
 .table-background {
-  background: rgba(172, 0, 165, 0.42);
+  /* background: rgba(172, 0, 165, 0.42); */
+  background: #303493;
   border: 1px solid rgba(255, 174, 2, 0.1);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -37,13 +39,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffae02;
+  background: #33A8DF;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffae02;
+  background: #33A8DF;
 }
 
 .table-responsive {
@@ -53,7 +55,7 @@
 
 th {
   color: white;
-  background: #953659 !important;
+  background: #33a8df !important;
   border: none !important;
   font-family: "Poppins";
   font-style: normal;
@@ -71,8 +73,8 @@ td {
   font-size: 15px;
 }
 tr:hover {
-  background: #ffae02;
-  color: #953659 !important;
+  background: #33A8DF;
+  color: #303493   !important;
 }
 
 @media (max-width: 500px) {
@@ -87,6 +89,6 @@ tr:hover {
   }
   .ETA_Heading {
     font-size: 32px;
-    color: #ffae02;
+    color: #33A8DF;
   }
 }

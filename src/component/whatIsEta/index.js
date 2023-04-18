@@ -306,9 +306,9 @@ function WhatIsEta() {
     <div className=" background_Pic mt-5" id="whatIsEta">
       <div className="container">
         <div className="row">
-          <div className="col-md-12 ">
+          {/* <div className="col-md-12 ">
             <div className="ETA_Heading text-center">WHAT IS ETA</div>
-          </div>
+          </div> */}
         </div>
         <div className="row d-flex justify-content-between mt-5">
           <div className="col-md-5 col-12  table-background">

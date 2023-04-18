@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connectionAction } from "../../Redux/connection/actions";
-import Logo from "../../assets/images/EstrellaTera_logo-01.svg";
+import Logo from "../../assets/images/EstrellaTera_logo-01.png";
 import "./header.css";
 function Header() {
   const dispatch = useDispatch();
@@ -10,11 +10,12 @@ function Header() {
     dispatch(connectionAction());
   };
   return (
+    <div style={{background:"#303493", }}>
     <div className="container">
-      <nav className="navbar navbar-expand-lg ">
+      <nav className="navbar navbar-expand-lg " >
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src={Logo} className="img-fluid" alt="" width={"70px"} />
+            <img src={Logo} className="img-fluid" alt="" width={"80px"} />
           </a>
           <button
             className="navbar-toggler"
@@ -68,6 +69,7 @@ function Header() {
           </div>
         </div>
       </nav>
+    </div>
     </div>
   );
 }

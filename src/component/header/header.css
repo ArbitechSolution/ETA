@@ -5,21 +5,21 @@
   font-size: 15px;
   /* identical to box height */
   color: #ffffff;
-  background: #5c3f93;
+  background: #33A8DF;
   border-radius: 5px;
 }
 .btn-Connect:hover {
-  color: #5c3f93;
-  background: #ffae02;
+  color: #33A8DF;
+  background: #33A8DF;
 }
 .nav-link {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  color: #5c3f93;
+  color: #ffff ;
 }
 .nav-link:hover {
-  color: #ffae02;
+  color: #33A8DF;
   text-transform: capitalize;
 }

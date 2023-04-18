@@ -13,7 +13,7 @@ function MainPage() {
   return (
     <>
       <Header />
-      <div style={{ background: "#32065B" }}>
+      <div style={{ background: "#fff" }}>
         <Herosection />
         <WalletRef />
         <WhatIsEta />

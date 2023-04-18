@@ -1,5 +1,5 @@
 .referral-box {
-  background: #923557;
+  background: #303493;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   font-family: "Poppins";
   font-style: normal;
@@ -8,7 +8,7 @@
   /* line-height: 36px; */
   /* identical to box height */
 
-  color: #ffae02;
+  color: white;
 }
 .text-level {
   font-family: "Poppins";
@@ -18,12 +18,13 @@
   /* line-height: 30px; */
   /* identical to box height */
 
-  color: #ffae02;
+  color: white;
 }
 
 .Polygon-icon {
   position: relative;
   left: -12px;
+  color:yellow;
 }
 .text-history {
   font-family: "Poppins";
@@ -33,5 +34,5 @@
   /* line-height: 60px; */
   /* identical to box height */
 text-align: center;
-  color: #ffae02;
+  color: #33A8DF;
 }
