@@ -7,8 +7,10 @@ import {
   usdaceTokenAddAbi,
 } from "../utils/contractUsdaceToken";
 import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
+import { useTranslation } from "react-i18next";
 
 function CommissionTable() {
+  const { t, i18n } = useTranslation();
   const [wHistory, setwHistory] = useState([]);
   const [widthrawData, setWidthrawData] = useState([]);
   const [totalUSDTEarn, setTotalUSDTEarn] = useState(0);
@@ -57,7 +59,7 @@ function CommissionTable() {
         );
         let count = await contract.methods.w_count(acc).call();
         console.log("Count=", count);
-        let widthrawData = [];
+        let widthrawDetails= [];
 
         for (let i = 0; i < count; i++) {
           let obj = {}
@@ -71,14 +73,13 @@ function CommissionTable() {
             let time = await contract.methods
             .withdrawHistoryTime(acc, i)
             .call();
-            console.log("time", new Date(time *1000).toLocaleDateString());
             obj.usdt = Number(web3.utils.fromWei(usdt))
             obj.usAce = Number(web3.utils.fromWei(usAce));
-            obj.date = new Date(time *1000).toLocaleDateString()
-          widthrawData.push(obj)
+            // obj.date = new Date(time *1000).toLocaleDateString()
+            obj.txId = acc;
+            widthrawDetails.push(obj)
           }
-          console.log("widthrawData", widthrawData);
-        setWidthrawData(widthrawData);
+        setWidthrawData(widthrawDetails);
       }
     } catch (e) {
       console.log(e);
@@ -104,7 +105,7 @@ function CommissionTable() {
       <div className="container">
         <div className="row">
           <div className="col-md-12 mt-4 table-background">
-            <div className="text-history mt-2">Withdrawal History</div>
+            <div className="text-history mt-2">{t("withdrawHistory")}</div>
             <div className="table-responsive mt-3 mb-3">
               <table className="table text-center  ">
                 <thead className="">
@@ -112,7 +113,7 @@ function CommissionTable() {
                     <th scope="col">No.</th>
                     <th scope="col">USDT</th>
                     <th scope="col">USDACE</th>
-                    <th scope="col">DATE</th>
+                    <th scope="col">{t("txid")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -122,7 +123,8 @@ function CommissionTable() {
                         <td scope="row">{index+1}</td>
                         <td>${data.usdt}</td>
                         <td>${data.usAce}</td>
-                        <td>{data.date}</td>
+                        <td>{data.txId.substring(0, 3) + "..." + data.txId.substring(data.txId.length - 3)}</td>
+                        {/* <td>{data.txId}</td> */}
                       </tr>
                     );
                   })}

@@ -8,7 +8,7 @@
   /* line-height: 36px; */
   /* identical to box height */
 
-  color: #ffae02;
+  color: #fff;
 }
 
 
@@ -32,7 +32,7 @@ color: #FFFFFF;
   color: #FFFFFF;
 }
 .btn-wallet{
-  background: #FFAE02;
+  background: #5BA8DD;
 border-radius: 5px;
 font-family: 'Poppins';
 font-style: normal;
@@ -46,8 +46,8 @@ height: 50px;
 color: #FFFFFF;
 }
 .btn-wallet:hover{
-  border: #FFAE02 1px solid;
-  color: #FFAE02;
+  border: #5BA8DD 1px solid;
+  color: #5BA8DD;
   background: none;
 }
 

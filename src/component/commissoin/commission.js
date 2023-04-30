@@ -4,15 +4,15 @@ import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import PolygonIcon from "../../assets/images/Polygon.svg";
+import Accordion from 'react-bootstrap/Accordion';
+import Table from 'react-bootstrap/Table';
+import { useTranslation } from "react-i18next";
+
+
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
-import { usdtTokenAdd, usdtTokenAbi } from "../utils/contractUsdtToken";
-import {
-  usdaceTokenAdd,
-  usdaceTokenAddAbi,
-} from "../utils/contractUsdaceToken";
-import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
 import {connectionAction} from "../../Redux/connection/actions"
 function Commission() {
+  const { t, i18n } = useTranslation();
   const [refLevel, setRefLevel] = useState([]);
   const [commissionInfo, setCommissionInfo] = useState([0, 0]);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,8 +40,22 @@ function Commission() {
         let counts = [];
         for (let level = 1; level <= 10; level++) {
           let count = await contract.methods.userCount(acc, level).call();
-          // console.log(typeof level);
-          counts.push(count);
+          
+          let arr = []
+          for(let i = 1; i <= count; i++ ){
+            let obj = {}
+            let refferralAddress = await contract.methods.userReferral(acc, level, i).call();
+            let totalUSDACESpent = await contract.methods.totalUSDACESpent(refferralAddress).call();
+            totalUSDACESpent = Number(web3.utils.fromWei(totalUSDACESpent)).toLocaleString()
+            let totalUSDTSpent = await contract.methods.totalUSDTSpent(refferralAddress).call();
+            totalUSDTSpent = Number(web3.utils.fromWei(totalUSDTSpent)).toLocaleString()
+
+            obj.refferralAddress = refferralAddress;
+            obj.totalUSDACESpent = totalUSDACESpent;
+            obj.totalUSDTSpent = totalUSDTSpent;
+            arr.push(obj)
+          }
+          counts.push(arr);
         }
         setRefLevel(counts);
         setIsLoading(false);
@@ -85,7 +99,7 @@ function Commission() {
       } else if (acc === "Wrong Network") {
         console.log("Wrong Wallet");
       } else if (acc === "Connect Wallet") {
-        toast.info("Connect wallet");
+        toast.info(t("connectWallet"));
       } else {
         let contract = new web3.eth.Contract(
           contractAddressAbi,
@@ -123,91 +137,60 @@ function Commission() {
     // userWithdraw();
   }, [acc]);
 
-  const data = [
-    {
-      icon: PolygonIcon,
-      level: "Level 1",
-      value: refLevel[0] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 2",
-      value: refLevel[1] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 3",
-      value: refLevel[2] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 4",
-      value: refLevel[3] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 5",
-      value: refLevel[4] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 6",
-      value: refLevel[5] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 7",
-      value: refLevel[6] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 8",
-      value: refLevel[7] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 9",
-      value: refLevel[8] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Level 10",
-      value: refLevel[9] || 0,
-    },
-    {
-      icon: PolygonIcon,
-      level: "Total",
-      value: refLevel.reduce((total, count) => total + Number(count), 0),
-    },
-  ];
+
   return (
     <div className="background_Pic mt-5">
       <div className="container">
-        <div className="row d-flex justify-content-between align-items-center">
-          <div className="ETA_Heading text-center">Commission</div>
-          <div className="col-md-5 mt-3 ">
-            <div className="row d-flex justify-content-between">
-              <div className="col-md-12 referral-box text-uppercase text-center p-2">
-                referral
+        <div className="row d-flex justify-content-center align-items-center">
+          <div className="ETA_Heading text-center">{t("commission")}</div>
+          <div className="col-md-10 mt-3 ">
+            <div className="row d-flex justify-content-center">
+              <div className="col-md-12 referral-box  text-center p-2">
+                {t("referral")}
               </div>
-              {data.map((level) => {
+              {refLevel?.map((level, index) => {
                 return (
                   <>
-                    <div className="col-md-5 referral-box mt-2">
-                      <div className="d-flex justify-content-between align-items-center text-justify">
-                        <div className="ms-0 Polygon-icon">
-                          <img src={PolygonIcon} className="img-fluid" alt="" />
-                        </div>
-                        <div className="text-level">{level.level}</div>
-                        <div className="text-value">{level.value}</div>
-                      </div>
-                    </div>
+                  <Accordion flush>
+      <Accordion.Item eventKey={index}>
+        <Accordion.Header className="text-center">{ i18n.language  == "en" ?  `${t("level")} ${index+1}` : `${index+1} ${t("level")}` }</Accordion.Header>
+        <Accordion.Body className="">
+          <div className="table-reponsive">
+        <Table className="table " responsive="sm">
+      <thead>
+        <tr className="text-center">
+          <th>{t("referralAddress")}</th>
+          <th>Spend USDT</th>
+          <th>Spend REGACE</th>
+        </tr>
+      </thead>
+      <tbody>
+      {
+        level.length > 0 ? level.map((item)=>{
+          return <tr className="text-center">
+            <td className="text-dark">{item.refferralAddress}</td>
+            <td className="text-dark">{item.totalUSDTSpent}</td>
+            <td className="text-dark">{item.totalUSDACESpent}</td>
+          </tr>
+        })
+        :
+        <tr>
+          <td className="text-dark" colSpan={3}>No Referral Found</td>
+        </tr>
+      }
+      </tbody>
+    </Table>
+          </div>
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
                   </>
                 );
               })}
             </div>
           </div>
-          <div className="col-md-5 mt-3">
+          <div className="row d-flex justify-content-center">
+          <div className="col-md-10 mt-3">
             <div className="row ">
               <div className="col-md-12 table-background">
                 <div className="row d-flex justify-content-center mt-4 mb-4">
@@ -236,7 +219,7 @@ function Commission() {
                           userWithdraw();
                         }}
                       >
-                        Withdraw Commission
+                        {t("withdrawCommission")}
                       </button>
                     </div>
                   </div>
@@ -260,6 +243,7 @@ function Commission() {
                 </div>
               </div> */}
             </div>
+          </div>
           </div>
         </div>
       </div>

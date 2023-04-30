@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import Pagination from "../../paginations/pagination"
+import { useTranslation } from "react-i18next";
+
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
-import { usdtTokenAdd, usdtTokenAbi } from "../utils/contractUsdtToken";
-import {
-    usdaceTokenAdd,
-    usdaceTokenAddAbi,
-} from "../utils/contractUsdaceToken";
 import {
     etaTokenAbi,
     etaTokenAddress,
 } from "../utils/etaToken";
-import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
 import { connectionAction } from "../../Redux/connection/actions"
-
 import Web3 from "web3";
-// const web3 = require("web3");
-const web3Supply = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const web3Supply = new Web3("https://bsc-dataseed1.binance.org/");
 const rpcUrl = new Web3("https://data-seed-prebsc-2-s2.binance.org:8545");
 function EtaWithdraw() {
+    const { t, i18n } = useTranslation();
     const [etaAmount, setEtaAmount] = useState(0);
     const [reinvestAmount, setReinvestAmount] = useState(0);
     const [etaBal, setEtaBal] = useState(0)
-    let [reinvestmentBtn, setreinvestmentBtn] = useState({ text: "Reinvest ETA", isDisable: true });
-    let [withdrawBtn, setwithdrawBtn] = useState({ text: "Withdraw ETA", isDisable: true })
+    let [reinvestmentBtn, setreinvestmentBtn] = useState({ text: "Reinvest REGETA", isDisable: true });
+    let [withdrawBtn, setwithdrawBtn] = useState({ text: `${t("WithdrawETA")}`, isDisable: true })
 
     let { acc, isWalletConnect } = useSelector((state) => state.connect);
 
@@ -42,7 +36,7 @@ function EtaWithdraw() {
                 console.log("bal", bal);
                 if (bal > 0) {
                     setReinvestAmount(bal)
-                    setreinvestmentBtn({ text: "Reinvest ETA", isDisable: false })
+                    setreinvestmentBtn({ text: "Reinvest REGETA", isDisable: false })
                 } else {
                     setreinvestmentBtn({ text: "Insufficient Balance", isDisable: true })
                 }
@@ -54,7 +48,7 @@ function EtaWithdraw() {
                 etaWithdrawAmount = Number(web3.utils.fromWei(etaWithdrawAmount));
                 if (etaWithdrawAmount > 0) {
                     setEtaAmount(etaWithdrawAmount)
-                    setwithdrawBtn({ text: "Withdraw ETA", isDisable: false })
+                    setwithdrawBtn({ text: `${t("WithdrawETA")}`, isDisable: false })
                 } else {
                     setwithdrawBtn({ text: "Insufficient Amount", isDisable: true })
                 }
@@ -81,7 +75,7 @@ function EtaWithdraw() {
             getEtaToken()
             connectWallet()
         } catch (error) {
-            setwithdrawBtn({ text: "Withdraw ETA", isDisable: false })
+            setwithdrawBtn({ text: `${t("WithdrawETA")}`, isDisable: false })
             console.error("error while withdraw eta", error);
         }
     }
@@ -92,7 +86,7 @@ function EtaWithdraw() {
             } else if (acc == "Wrong Network") {
                 toast.info("Wrong Wallet");
             } else if (acc == "Connect Wallet") {
-                toast.info("Connect Wallet");
+                toast.info(t("connectWallet"));
             } else {
                 if (reinvestAmount > 0 && reinvestAmount != "") {
                     const web3 = window.web3;
@@ -112,7 +106,7 @@ function EtaWithdraw() {
                             })
                             getEtaToken()
                             connectWallet()
-                            setreinvestmentBtn({ text: "Reinvest ETA", isDisable: false })
+                            setreinvestmentBtn({ text: "Reinvest REGETA", isDisable: false })
                         } else {
                             toast.error("Round must be greater then 2")
                         }
@@ -122,7 +116,7 @@ function EtaWithdraw() {
                 }
             }
         } catch (error) {
-            setreinvestmentBtn({ text: "Reinvest ETA", isDisable: false })
+            setreinvestmentBtn({ text: "Reinvest REGETA", isDisable: false })
             console.error("error while reinvest", error);
         }
     }
@@ -131,18 +125,18 @@ function EtaWithdraw() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 ">
-                        <div className="ETA_Heading text-center">Withdraw & Reinvest</div>
+                        <div className="ETA_Heading text-center">{t("Withdraw")}</div>
                     </div>
                 </div>
-                <div className="row d-flex justify-content-between  mobile-responsive">
-                    <div className="col-md-5 table-background  mt-3">
+                <div className="row d-flex justify-content-center  mobile-responsive">
+                    <div className="col-md-10 table-background  mt-3">
                         <div className="text-round text-center mt-3">
-                            ETA Withdraw
+                        {t("etaWithdraw")}
                         </div>
                         <div className="row d-flex justify-content-center mt-3 mb-3">
                             <div className="col-md-10 col-10 box-backgorund">
                                 <div className="d-flex justify-content-between p-3">
-                                    <div className="p-2 text-unit">GET ETA:</div>
+                                    <div className="p-2 text-unit">{t("Youwillget")}:</div>
                                     <div className="p-2 text-value  ">{etaAmount} ETA</div>
                                 </div>
                             </div>
@@ -160,7 +154,7 @@ function EtaWithdraw() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-5 table-background  mt-3">
+                    {/* <div className="col-md-5 table-background  mt-3">
                         <div className="text-round text-center mt-3">
                             ETA Reinvest
                         </div>
@@ -189,7 +183,7 @@ function EtaWithdraw() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
 

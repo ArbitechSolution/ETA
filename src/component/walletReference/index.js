@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./wallet.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
+import {FiCopy} from "react-icons/fi"
 // import { connectionAction } from "../../Redux/connection/actions";
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
-
+import { useTranslation } from "react-i18next";
 function WalletRef() {
+  const { t, i18n } = useTranslation();
   const [ref, setRef] = useState("0x000000000000000000000000");
   const [refLink, setRefLink] = useState(`${window.location.href}`);
   const [checkDeposit, setCheckDeposit] = useState(false);
-  let {acc} = useSelector((state) => state.connect);
-  console.log(acc);
+  let {acc, isWalletConnect} = useSelector((state) => state.connect);
 
   const refaddress = async () => {
     const web3 = window.web3;
@@ -164,10 +164,10 @@ function WalletRef() {
             <div className="col-md-12 col-12  input-box">
               <div className="row ">
                 <div className="col-lg-4 col-md-5 col-12  ">
-                  <h4 className="text-heading p-3 ">Wallet Address:</h4>
+                  <h4 className="text-heading p-3 ">{t("walletAddress")}:</h4>
                 </div>
                 <div className=" col-lg-8 col-md-7 col-12  ">
-                  <h4 className="text-address p-3 "> {acc}</h4>
+                  <h4 className="text-address p-3 "> {isWalletConnect ? acc : t("connectWallet")}</h4>
                 </div>
                 {/* 
                 <p className="text-address p-3">
@@ -177,16 +177,19 @@ function WalletRef() {
             </div>
             <div className="col-md-12 col-12  input-box">
               <div className="row  ">
-                <div className="col-lg-4 col-md-4 col-12">
-                  <h4 className="text-heading p-3 ">Referral Link:</h4>
+                <div className="col-lg-3 col-md-3 col-12">
+                  <h4 className="text-heading p-3 ">{t("referralLink")}:</h4>
                 </div>
-                <div className="col-lg-8 col-md-8 col-12 ">
+                <div className="col-lg-7 col-md-7 col-10 ">
                   <h4 className="text-address p-3 ">{refLink}</h4>
                 </div>
-                {/* 
-                <p className="text-address p-3">
-                 
-                </p> */}
+                <div className="col-lg-2 col-md-2 col-2" 
+                onClick={()=>{navigator.clipboard.writeText(refLink)}}
+                >
+                  <h4 className="p-3 text-light">
+                <FiCopy/>
+                  </h4>
+                </div>
               </div>
             </div>
             <div className="col-md-12 col-12  ">
@@ -206,7 +209,7 @@ function WalletRef() {
                   style={{ fontSize: "20px" }}
                   onClick={handleRegister}
                 >
-                  Register
+                  {t("Register")}
                 </button>
               </div>
               {/* <input className="input-box">

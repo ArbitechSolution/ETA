@@ -13,8 +13,8 @@ function MainPage() {
   return (
     <>
       <Header />
-      <div style={{ background: "#32065B" }}>
-        <Herosection />
+      <div style={{ background: "" }} className="mt-5">
+        {/* <Herosection /> */}
         <WalletRef />
         <WhatIsEta />
         <Commission />

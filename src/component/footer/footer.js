@@ -1,5 +1,5 @@
 import React from "react";
-import EstrellaLogo from "../../assets/images/EstrellaTera_logo_light.svg";
+import EstrellaLogo from "../../assets/images/etafooter.png";
 // import InstagramIcon from "../../assets/images/Group50.svg"
 import "./footer.css";
 import { FaFacebookF } from "react-icons/fa";
@@ -11,11 +11,14 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
+    <div style={{background:"#303493"}}>
+
+   
     <div className="container">
       <div className="row d-flex justify-content-center">
-        <div className="col-md-12 ">
+        <div className="col-md-12 mt-3">
           <div className="text-center">
-            <img src={EstrellaLogo} className="img-fluid" alt="" />
+            <img src={EstrellaLogo} className="img-fluid" alt="" width={"150px"} />
           </div>
           <div className="row d-flex justify-content-center mt-5">
             <div className="col-md-2 col-6">
@@ -35,12 +38,13 @@ function Footer() {
               </div>
             </div>
           </div>
-          <hr style={{color:"#ffae02", width:"100%"}}/>
+          <hr style={{color:"#5BA8DD", width:"100%"}}/>
           <div className="text-allRight m-3">
           © 2022 All Rights Reserved Estrella Tera
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

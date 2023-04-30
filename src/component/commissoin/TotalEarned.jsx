@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
+import Table from 'react-bootstrap/Table';
+import { useTranslation } from "react-i18next";
 
 const TotalEarned = () => {
+  const { t, i18n } = useTranslation();
   const [commissionHistory, setCommissionHistory] = useState([
     {
       txid: "0",
@@ -55,12 +58,12 @@ const TotalEarned = () => {
           <div className="row">
             <div className="col-md-12 table-background">
               <div className=" mt-3 mb-3">
-                <table className="table text-center">
+                <Table className="table text-center" responsive="sm">
                   <thead>
                     <tr>
-                      <th scope="col">Address</th>
-                      <th scope="col">USDT Earned</th>
-                      <th scope="col">USDACE Earned</th>
+                      <th scope="col">{t("address")}</th>
+                      <th scope="col">{t("USDTEarned")}</th>
+                      <th scope="col">{t("USDACEEarned")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -74,7 +77,7 @@ const TotalEarned = () => {
                       );
                     })}
                   </tbody>
-                </table>
+                </Table>
               </div>
             </div>
           </div>

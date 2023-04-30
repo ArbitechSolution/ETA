@@ -3,14 +3,14 @@ let isItConnected = false;
 const networks = {
   bsc: {
     // chainId: `0x${Number(56).toString(16)}`,
-    chainId: `0x${Number(97).toString(16)}`,
-    chainName: "Binance test   smart chain",
+    chainId: `0x${Number(56).toString(16)}`,
+    chainName: "Binance smart chain",
     nativeCurrency: {
       symbol: "BNB",
       decimals: 18,
     },
     rpcUrls: [
-      "https://data-seed-prebsc-1-s1.binance.org:8545/"
+      "https://bsc-dataseed1.binance.org/"
       // "https://bsc-dataseed1.binance.org",
       // "https://bsc-dataseed2.binance.org",
       // "https://bsc-dataseed3.binance.org",
@@ -74,7 +74,7 @@ export const loadWeb3 = async () => {
       await window.web3.eth.getChainId((err, netId) => {
         switch (netId.toString()) {
           // case "56":
-          case "97": 
+          case "56": 
             isItConnected = true;
             net_id = netId;
             break;

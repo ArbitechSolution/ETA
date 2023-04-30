@@ -4,28 +4,32 @@ import { toast } from "react-toastify";
 import Pagination from "../../paginations/pagination"
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
 import { usdtTokenAdd, usdtTokenAbi } from "../utils/contractUsdtToken";
+import { useTranslation } from "react-i18next";
+import { Table } from "react-bootstrap";
 import {
   usdaceTokenAdd,
   usdaceTokenAddAbi,
 } from "../utils/contractUsdaceToken";
-import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
+import { etaTokenAbi, etaTokenAddress } from "../utils/etaToken";
 import "./whatIs.css";
 import Web3 from "web3";
 import {connectionAction} from "../../Redux/connection/actions"
 // const web3 = require("web3");
-const web3Supply = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const web3Supply = new Web3("https://bsc-dataseed1.binance.org/");
 const rpcUrl = new Web3("https://data-seed-prebsc-2-s2.binance.org:8545");
 
 function WhatIsEta() {
+  const { t, i18n } = useTranslation();
   const [usdtUnit, setUsdtUnit] = useState(0);
   const [usdtCost, setusdtCost] = useState(0);
   const [usdaceUnit, setUsdaceUnit] = useState(0);
-  let [usdaceBtn, setUsdaceBtn] = useState({ text: "Buy ETA", isDisable: true });
-  let [usdtBtn, setUsdtBtn] = useState({ text: "Buy ETA", isDisable: true })
+  let [usdaceBtn, setUsdaceBtn] = useState({ text: `${t("buyEta")}`, isDisable: true });
+  let [usdtBtn, setUsdtBtn] = useState({ text: `${t("buyEta")}`, isDisable: true })
   const [usdaceCost, setusdaceCost] = useState(0);
   const [roundNumber, setRoundNumber] = useState(null);
-  const [priceOrder, setPriceOrder] = useState([]);
+  const [currentPrice, setCurrentPrice] = useState(null);
   const [currentPage, setCurrentPage] = useState(null);
+  const [etaBalance, setEtaBalance] = useState(null)
   let { acc, isWalletConnect } = useSelector((state) => state.connect);
   const dispatch = useDispatch()
     const connectWallet = () => {
@@ -39,7 +43,7 @@ function WhatIsEta() {
       );
       if (usdtUnit == 0 || usdtUnit == "") {
         setusdtCost(0);
-        setUsdtBtn({ text: "Buy ETA", isDisable: true })
+        setUsdtBtn({ text: `${t("buyEta")}`, isDisable: true })
       } else {
         const round = await contract.methods.round().call();
         let maxDeposit = 0;
@@ -67,13 +71,13 @@ function WhatIsEta() {
             let balOfUsdace = await usdaceToken.methods.balanceOf(acc).call();
             balOfUsdace = web3.utils.fromWei(balOfUsdace);
             
-            if (parseFloat(balOfUsdace) > parseFloat(usdtUnit)) {
-              setUsdtBtn({ text: "Buy ETA", isDisable: false })
+            if (parseFloat(balOfUsdace) > parseFloat(valueCost)) {
+              setUsdtBtn({ text: `${t("buyEta")}`, isDisable: false })
             } else {
               setUsdtBtn({ text: "Insufficent USDT", isDisable: true })
             }
           } else {
-            setUsdtBtn({ text: "Buy ETA", isDisable: true })
+            setUsdtBtn({ text: `${t("buyEta")}`, isDisable: true })
           }
         } else {
           setUsdtBtn({ text: `Enter your Value  ${minDeposit} to ${maxDeposit}`, isDisable: true });
@@ -93,7 +97,7 @@ function WhatIsEta() {
       );
       if (usdaceUnit == 0 || usdaceUnit == "") {
         setusdaceCost(0);
-        setUsdaceBtn({ text: "Buy ETA", isDisable: true })
+        setUsdaceBtn({ text: `${t("buyEta")}`, isDisable: true })
       } else {
         const round = await contract.methods.round().call();
         let maxDeposit = 0;
@@ -105,7 +109,6 @@ function WhatIsEta() {
         maxDeposit = web3Supply.utils.fromWei(maxDeposit)
         let minDeposit = await contract.methods.minDeposit().call()
         minDeposit = web3Supply.utils.fromWei(minDeposit)
-        console.log("maxDeposit", maxDeposit);
         if (Number(usdaceUnit) >= Number(minDeposit) && Number(usdaceUnit) <= Number(maxDeposit)) {
           let valueUsd = web3Supply.utils.toWei(usdaceUnit);
           let checkinputUsdace = await contract.methods
@@ -122,20 +125,20 @@ function WhatIsEta() {
             let balOfUsdace = await usdaceToken.methods.balanceOf(acc).call();
             balOfUsdace = web3.utils.fromWei(balOfUsdace);
             console.log("balOfUsdace", balOfUsdace);
-            if (parseFloat(balOfUsdace) > parseFloat(usdaceUnit)) {
-              setUsdaceBtn({ text: "Buy ETA", isDisable: false })
+            if (parseFloat(balOfUsdace) > parseFloat(valueUsdace)) {
+              setUsdaceBtn({ text: `${t("buyEta")}`, isDisable: false })
             } else {
               setUsdaceBtn({ text: "Insufficent USDACE", isDisable: true })
             }
           } else {
-            setUsdaceBtn({ text: "Buy ETA", isDisable: true })
+            setUsdaceBtn({ text: `${t("buyEta")}`, isDisable: true })
           }
         } else {
           setUsdaceBtn({ text: `Enter your Value  ${minDeposit} to ${maxDeposit}`, isDisable: true });
         }
       }
     } catch (e) {
-      setUsdaceBtn({ text: "Buy ETA", isDisable: true })
+      setUsdaceBtn({ text: `${t("buyEta")}`, isDisable: true })
       console.error("Error While Buying Tokens", e);
     }
   };
@@ -148,7 +151,7 @@ function WhatIsEta() {
       } else if (acc == "Wrong Network") {
         toast.info("Wrong Wallet");
       } else if (acc == "Connect Wallet") {
-        toast.info("Connect Wallet");
+        toast.info(t("connectWallet"));
       } else {
         let usdtToken = new web3.eth.Contract(usdtTokenAbi, usdtTokenAdd);
         let balOfUsdt = await usdtToken.methods.balanceOf(acc).call();
@@ -172,9 +175,9 @@ function WhatIsEta() {
               priceOrderData()
               getData()
               connectWallet()
-              setUsdtBtn({ text: "Buy ETA", isDisable: false });
+              setUsdtBtn({ text: `${t("buyEta")}`, isDisable: false });
               setUsdtUnit(0)
-              toast.info("Transcation Succseefull");
+              toast.info(t("txSuccess"));
             } else {
               toast.info("You have not registered.")
             }
@@ -184,7 +187,7 @@ function WhatIsEta() {
         
       }
     } catch (e) {
-      setUsdtBtn({ text: "Buy ETA", isDisable: false })
+      setUsdtBtn({ text: `${t("buyEta")}`, isDisable: false })
       console.error("Error While Buying Tokens", e);
     }
   };
@@ -197,7 +200,7 @@ function WhatIsEta() {
       } else if (acc == "Wrong Network") {
         toast.info("Wrong Wallet");
       } else if (acc == "Connect Wallet") {
-        toast.info("Connect Wallet");
+        toast.info(t("connectWallet"));
       } else {
         let usdaceToken = new web3.eth.Contract(
           usdaceTokenAddAbi,
@@ -226,8 +229,8 @@ function WhatIsEta() {
               priceOrderData()
               setUsdaceUnit(0)
               connectWallet()
-              setUsdaceBtn({ text: "Buy ETA", isDisable: true })
-              toast.info("Transcation Succseefull");
+              setUsdaceBtn({ text: `${t("buyEta")}`, isDisable: true })
+              toast.info(t("txSuccess"));
             } else {
               toast.info("You have not registered.")
             }
@@ -237,17 +240,20 @@ function WhatIsEta() {
       
       }
     } catch (e) {
-      setUsdaceBtn({ text: "Buy ETA", isDisable: false })
+      setUsdaceBtn({ text: `${t("buyEta")}`, isDisable: false })
       console.error("Error While Buying Tokens", e);
     }
   };
   const getData = async () => {
     try {
-
       let contract = new web3Supply.eth.Contract(
         contractAddressAbi,
         contractAddress
       );
+      let minDeposit = await contract.methods.minDeposit().call()
+      let curPrice = await contract.methods.checkPrice(minDeposit).call();
+      setCurrentPrice(Number(web3Supply.utils.fromWei(curPrice)))
+
       let roundNo = await contract.methods.round().call();
       setCurrentPage(Number(roundNo) + 1)
       setRoundNumber(Number(roundNo) + 1);
@@ -261,23 +267,25 @@ function WhatIsEta() {
       if (acc != "No Wallet" && acc != "Wrong Network" && acc != "Connect Wallet") {
         setIsLoading(true)
         const web3 = window.web3;
-        let contract = new web3.eth.Contract(
-          contractAddressAbi,
-          contractAddress
-        );
-        let roundNo = await contract.methods.round().call();
-        let { 0: token, 1: price } = await contract.methods.countBuyers(acc, currentPage-1).call();
-        let newdata = [];
-        for (let i = 0; i < token.length; i++) {
-          if(token[i] > 0){
-            let obj = {}
-            obj.buytoken = Number(web3.utils.fromWei(token[i]));
-            obj.buytokenprice = Number(web3.utils.fromWei(price[i]))
-            newdata.push(obj)
-          }
-        }
-        setIsLoading(false)
-        setPriceOrder(newdata);
+       const etaContract  = new web3.eth.Contract(etaTokenAbi, etaTokenAddress);
+        let userEtaBal = await etaContract.methods.balanceOf(acc).call();
+        setEtaBalance(Number(web3.utils.fromWei(userEtaBal)))
+        // let roundNo = await contract.methods.round().call();
+        // let { 0: token, 1: price } = await contract.methods.countBuyers(acc, currentPage-1).call();
+        // let newdata = [];
+        // for (let i = 0; i < token.length; i++) {
+        //   if(token[i] > 0){
+        //     let obj = {}
+        //     obj.buytoken = Number(web3.utils.fromWei(token[i]));
+        //     obj.buytokenprice = Number(web3.utils.fromWei(price[i]))
+        //     newdata.push(obj)
+        //   }
+        // }
+        // const etaContract  = new web3.eth.Contract(etaTokenAbi, etaTokenAddress);
+        // let userEtaBal = await etaContract.methods.balanceOf(acc).call();
+
+        // setIsLoading(false)
+        // setPriceOrder(newdata);
       }
     } catch (e) {
       setIsLoading(false)
@@ -305,16 +313,36 @@ function WhatIsEta() {
   return (
     <div className=" background_Pic mt-5" id="whatIsEta">
       <div className="container">
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-12 ">
-            <div className="ETA_Heading text-center">WHAT IS ETA</div>
+            <div className="ETA_Heading text-center">{t("buy")} ETA</div>
           </div>
+        </div> */}
+        <div className="row d-flex justify-content-center">
+        <div className="col-md-10">
+      <Table className="text-center">
+        <thead>
+        <tr>
+          <th>{t("round")}</th>
+          <th>{t("currentPrice")} </th>
+          {/* <th>{t("etaBalance")}</th> */}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+        <td className="text-dark">{roundNumber}</td>
+          <td className="text-dark">{currentPrice} </td>
+          {/* <td className="text-dark">{etaBalance == null ? t("connectWallet") : etaBalance}</td> */}
+          </tr>
+        </tbody>
+      </Table>
+      </div>
         </div>
-        <div className="row d-flex justify-content-between mt-5">
-          <div className="col-md-5 col-12  table-background">
+        <div className="row d-flex justify-content-center mt-5">
+          {/* <div className="col-md-5 col-12  table-background">
             <div className="text-center mt-3">
               <h4 className="text-round">
-                Round No:
+                {t("roundNo")}:
                 <span className="text-white">&nbsp; {currentPage}</span>
               </h4>
               <h4 className="text-round">ETA Buy Order</h4>
@@ -367,10 +395,10 @@ function WhatIsEta() {
             />
           </div>
         </div>}
-          </div>
-          <div className="col-md-5 col-12 ">
-            <div className="row  mobile-responsive">
-              <div className="col-md-12 table-background  mt-3">
+          </div> */}
+          <div className="col-md-10 col-12 ">
+            <div className="row  mobile-responsive justify-content-between">
+              <div className="col-md-5 table-background  mt-3">
                 <div className="text-round text-center mt-3">
                   Buy ETA using USDT
                 </div>
@@ -379,7 +407,7 @@ function WhatIsEta() {
                     <div className="d-flex justify-content-between p-3">
                       <label className="p-2 text-unit">ETA:</label>
                       <input
-                        placeholder="ETA"
+                        placeholder="USDT"
                         type="number"
                         value={usdtUnit}
                         onChange={(e) => setUsdtUnit(e.target.value)}
@@ -388,7 +416,7 @@ function WhatIsEta() {
                   </div>
                   <div className="col-md-10 col-10 box-backgorund mt-3">
                     <div className="d-flex justify-content-between">
-                      <div className="p-2 text-unit">Cost:</div>
+                      <div className="p-2 text-unit">{t("cost")}:</div>
                       <div className="p-2 text-value  ">{usdtCost} USDT</div>
                     </div>
                   </div>
@@ -406,7 +434,7 @@ function WhatIsEta() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-12 table-background  mt-3">
+              <div className="col-md-5 table-background  mt-3">
                 <div className="text-round text-center mt-3">
                   Buy ETA using USDACE
                 </div>
@@ -424,7 +452,7 @@ function WhatIsEta() {
                   </div>
                   <div className="col-md-10 col-10 box-backgorund mt-3">
                     <div className="d-flex justify-content-between">
-                      <div className="p-2 text-unit">Cost:</div>
+                      <div className="p-2 text-unit">{t("cost")}:</div>
                       <div className="p-2 text-value  ">{usdaceCost} USDACE</div>
                     </div>
                   </div>

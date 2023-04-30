@@ -3,15 +3,12 @@ import "./etaPortfolio.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
-import { usdtTokenAdd, usdtTokenAbi } from "../utils/contractUsdtToken";
-import {
-  usdaceTokenAdd,
-  usdaceTokenAddAbi,
-} from "../utils/contractUsdaceToken";
-import { contractTokenAdd, contractTokenAddAbi } from "../utils/contractToken";
+import { useTranslation } from "react-i18next";
+
 import Web3 from "web3";
-const web3Supply = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const web3Supply = new Web3("https://bsc-dataseed1.binance.org/");
 function EtaPortfolio() {
+  const { t, i18n } = useTranslation();
   const [roundNumber, setRoundNumber] = useState(0);
   const [spentUsd, setSpentUsd] = useState(0);
   const [receivedUsdt, setReceivedUsdt] = useState(0);
@@ -93,35 +90,35 @@ function EtaPortfolio() {
     <div className="container">
       <div className="row mt-5">
         <div className="col-md-12">
-          <div className="ETA_Heading text-center">ETA Portfolio</div>
+          <div className="ETA_Heading text-center">{t("myportfolio")}</div>
         </div>
       </div>
       <div className="row d-flex justify-content-between">
-        <div className="col-md-3 col-12 table-background mobile-space">
+        {/* <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-ETA text-uppercase text-center p-2">
-            My ETA Portfolio
+          {t("myportfolio")}
           </div>
-        </div>
-        <div className="col-md-3 col-12 table-background mobile-space">
+        </div> */}
+        {/* <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-ETA text-uppercase text-center p-2">
             Current Round: <spam className="text-white">{Number(roundNumber)+1}</spam>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="row d-flex justify-content-between mt-3">
         <div className="col-md-3 col-12 col-12 table-background mobile-space ">
           <div className=" text-value text-uppercase text-center p-2">
-            Total ETA Purchased<br/>{etaBal}
+            {t("totlaEtaPurchased")}<br/>{etaBal}
           </div>
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-value text-uppercase text-center p-2">
-            Total USDT Spent<br/>${spentUsd}
+            {t("totalUsdSpen")}<br/>${spentUsd}
           </div>
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-value text-uppercase text-center p-2">
-            Total USDT Earned<br/>${receivedUsdt}
+          {t("totalUsdtEarned")}<br/>${receivedUsdt}
           </div>
         </div>
       </div>
