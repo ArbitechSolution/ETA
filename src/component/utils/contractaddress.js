@@ -1,4 +1,4 @@
-export const contractAddress = "0x0211616971151AcC438f9671E8aBD8AD89022c31";
+export const contractAddress = "0x0F952EADB372509421E7F7B0cA4d90556CDd9d32";
 export const contractAddressAbi = [{
 	"inputs": [],
 	"stateMutability": "nonpayable",
@@ -35,31 +35,21 @@ export const contractAddressAbi = [{
 	"type": "event"
 }, {
 	"inputs": [],
+	"name": "ETAToken",
+	"outputs": [{
+		"internalType": "contract IERC20",
+		"name": "",
+		"type": "address"
+	}],
+	"stateMutability": "view",
+	"type": "function"
+}, {
+	"inputs": [],
 	"name": "PreviousRound",
 	"outputs": [{
 		"internalType": "uint256",
 		"name": "",
 		"type": "uint256"
-	}],
-	"stateMutability": "view",
-	"type": "function"
-}, {
-	"inputs": [],
-	"name": "REGACEToken",
-	"outputs": [{
-		"internalType": "contract IERC20",
-		"name": "",
-		"type": "address"
-	}],
-	"stateMutability": "view",
-	"type": "function"
-}, {
-	"inputs": [],
-	"name": "REGETAToken",
-	"outputs": [{
-		"internalType": "contract IERC20",
-		"name": "",
-		"type": "address"
 	}],
 	"stateMutability": "view",
 	"type": "function"
@@ -152,6 +142,16 @@ export const contractAddressAbi = [{
 		"internalType": "uint256",
 		"name": "",
 		"type": "uint256"
+	}],
+	"stateMutability": "view",
+	"type": "function"
+}, {
+	"inputs": [],
+	"name": "USDACEToken",
+	"outputs": [{
+		"internalType": "contract IERC20",
+		"name": "",
+		"type": "address"
 	}],
 	"stateMutability": "view",
 	"type": "function"
@@ -364,6 +364,20 @@ export const contractAddressAbi = [{
 }, {
 	"inputs": [{
 		"internalType": "uint256",
+		"name": "",
+		"type": "uint256"
+	}],
+	"name": "checkMinting",
+	"outputs": [{
+		"internalType": "bool",
+		"name": "",
+		"type": "bool"
+	}],
+	"stateMutability": "view",
+	"type": "function"
+}, {
+	"inputs": [{
+		"internalType": "uint256",
 		"name": "_tokens",
 		"type": "uint256"
 	}],
@@ -389,20 +403,6 @@ export const contractAddressAbi = [{
 	"outputs": [{
 		"internalType": "uint256",
 		"name": "",
-		"type": "uint256"
-	}],
-	"stateMutability": "view",
-	"type": "function"
-}, {
-	"inputs": [],
-	"name": "checkSellerOrder",
-	"outputs": [{
-		"internalType": "uint256",
-		"name": "_price",
-		"type": "uint256"
-	}, {
-		"internalType": "uint256",
-		"name": "_TokensellerRemaining",
 		"type": "uint256"
 	}],
 	"stateMutability": "view",
@@ -610,6 +610,36 @@ export const contractAddressAbi = [{
 }, {
 	"inputs": [{
 		"internalType": "uint256",
+		"name": "_token",
+		"type": "uint256"
+	}, {
+		"internalType": "uint256",
+		"name": "_round",
+		"type": "uint256"
+	}, {
+		"internalType": "uint256",
+		"name": "_cycle",
+		"type": "uint256"
+	}],
+	"name": "getPrice1",
+	"outputs": [{
+		"internalType": "uint256[]",
+		"name": "",
+		"type": "uint256[]"
+	}, {
+		"internalType": "uint256[]",
+		"name": "",
+		"type": "uint256[]"
+	}, {
+		"internalType": "uint256[]",
+		"name": "",
+		"type": "uint256[]"
+	}],
+	"stateMutability": "view",
+	"type": "function"
+}, {
+	"inputs": [{
+		"internalType": "uint256",
 		"name": "_Tokens",
 		"type": "uint256"
 	}, {
@@ -675,7 +705,7 @@ export const contractAddressAbi = [{
 		"name": "_users",
 		"type": "address"
 	}],
-	"name": "maxWithdrwa",
+	"name": "maxWithdraw",
 	"outputs": [{
 		"internalType": "uint256",
 		"name": "",
@@ -878,24 +908,6 @@ export const contractAddressAbi = [{
 		"type": "uint256"
 	}],
 	"name": "totalTokencycle",
-	"outputs": [{
-		"internalType": "uint256",
-		"name": "",
-		"type": "uint256"
-	}],
-	"stateMutability": "view",
-	"type": "function"
-}, {
-	"inputs": [{
-		"internalType": "uint256",
-		"name": "",
-		"type": "uint256"
-	}, {
-		"internalType": "uint256",
-		"name": "",
-		"type": "uint256"
-	}],
-	"name": "totalTokencyclePrice",
 	"outputs": [{
 		"internalType": "uint256",
 		"name": "",
@@ -1115,7 +1127,7 @@ export const contractAddressAbi = [{
 	"type": "function"
 }, {
 	"inputs": [],
-	"name": "userWithdrawREGETAToken",
+	"name": "userWithdrawETAToken",
 	"outputs": [],
 	"stateMutability": "nonpayable",
 	"type": "function"

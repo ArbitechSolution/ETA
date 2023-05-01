@@ -1,4 +1,4 @@
-export const usdaceTokenAdd = "0xe98C2B69c582cDD9527c3d76B342d859A5EC6a97";
+export const usdaceTokenAdd = "0xa8baC94b2CEA14cf99a9C4E84380047A8fC705Ea";
 export const usdaceTokenAddAbi = [{
   "inputs": [],
   "stateMutability": "nonpayable",

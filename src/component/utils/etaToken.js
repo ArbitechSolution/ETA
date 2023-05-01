@@ -1,4 +1,4 @@
-export const etaTokenAddress = "0x5E77A1c1cE599DE7E56AF84a6e9E83Ef1Ec33F9e";
+export const etaTokenAddress = "0x76ab71EfD97A29926328a6335B5Fb1cF348309D4";
 export const etaTokenAbi = [{
     "inputs": [],
     "stateMutability": "nonpayable",
