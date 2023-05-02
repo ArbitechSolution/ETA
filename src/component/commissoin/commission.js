@@ -95,9 +95,9 @@ function Commission() {
     try {
       console.log(commissionInfo[0] === 0);
       if (acc === "No Wallet") {
-        console.log("No Wallet");
+        toast.info(t("connectWallet"));
       } else if (acc === "Wrong Network") {
-        console.log("Wrong Wallet");
+        toast.info(t("connectWallet"));
       } else if (acc === "Connect Wallet") {
         toast.info(t("connectWallet"));
       } else {
@@ -134,7 +134,6 @@ function Commission() {
   useEffect(() => {
     ReferralLevel();
     commissionDetail();
-    // userWithdraw();
   }, [acc]);
 
 

@@ -80,9 +80,11 @@ function EtaTable() {
           contractAddress
         );
         let roundNo = await contract.methods.round().call();
+        console.log("token", roundNo);
         let newdata = [];
-        for (let index = 0; index < roundNo; index++) {
+        for (let index = 0; index < roundNo +1; index++) {
         let { 0: token, 1: price } = await contract.methods.countBuyers(acc, index).call();
+       
         for (let i = 0; i < token.length; i++) {
           if(token[i] > 0){
             let obj = {}
@@ -115,7 +117,7 @@ function EtaTable() {
           <div className="col-md-12 table-background">
         
             <div className="table-responsive mt-2">
-              <table className="table" style={{ width: "100%" }}>
+              <table className="table table-bordered" style={{ width: "100%" }} >
                 <thead className="text-center fixed">
                   <tr>
                     <th scope="col">{t("price")}</th>
@@ -130,7 +132,7 @@ function EtaTable() {
                       <tr key={index}>
                         <td>{item.buytokenprice}</td>
                         <td>{item.buytoken}</td>
-                        <td>{item.round}</td>
+                        <td>{Number(item.round)+1}</td>
                         <td>{item.txId}</td>
                       </tr>
                     );

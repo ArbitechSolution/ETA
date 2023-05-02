@@ -24,8 +24,8 @@
     "withdrawHistory":"提现记录",
     "myportfolio":"我的投资组合",
     "totlaEtaPurchased":"购买ETA总数",
-    "totalUsdSpen":"总消费 $0 USD",
-    "totalUsdtEarned":"总赚取 $0 USDT",
+    "totalUsdSpen":"总消费 USD",
+    "totalUsdtEarned":"总赚取 USDT",
     "price":"价格",
     "ETAToken":"兆星币",
     "Withdraw":"提现",
@@ -36,5 +36,7 @@
     "USDTEarned":"总USDT",
     "USDACEEarned":"总 USDACE",
     "txid":"交易TXID",
-    "txSuccess":"交易完成"
+    "txSuccess":"交易完成",
+    "buyEtausingUSDT":"USDT购买兆星",
+    "buyEtausingUSDACE":"USDACE购买兆星"
 }

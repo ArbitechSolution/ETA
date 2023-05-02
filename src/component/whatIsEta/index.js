@@ -252,7 +252,7 @@ function WhatIsEta() {
       );
       let minDeposit = await contract.methods.minDeposit().call()
       let curPrice = await contract.methods.checkPrice(minDeposit).call();
-      setCurrentPrice(Number(web3Supply.utils.fromWei(curPrice)))
+      setCurrentPrice(Number(web3Supply.utils.fromWei(curPrice)).toFixed(4))
 
       let roundNo = await contract.methods.round().call();
       setCurrentPage(Number(roundNo) + 1)
@@ -306,7 +306,6 @@ function WhatIsEta() {
   useEffect(() => {
     getData();
     // setInterval(() => {
-    getData();
     // }, 1000);
   }, [acc]);
 
@@ -400,7 +399,7 @@ function WhatIsEta() {
             <div className="row  mobile-responsive justify-content-between">
               <div className="col-md-5 table-background  mt-3">
                 <div className="text-round text-center mt-3">
-                  Buy ETA using USDT
+                  {t("buyEtausingUSDT")}
                 </div>
                 <div className="row d-flex justify-content-center mt-3 mb-3">
                   <div className="col-md-10 col-10 box-backgorund">
@@ -436,7 +435,7 @@ function WhatIsEta() {
               </div>
               <div className="col-md-5 table-background  mt-3">
                 <div className="text-round text-center mt-3">
-                  Buy ETA using USDACE
+                {t("buyEtausingUSDACE")}
                 </div>
                 <div className="row d-flex justify-content-center mt-3 mb-3">
                   <div className="col-md-10 col-10 box-backgorund">

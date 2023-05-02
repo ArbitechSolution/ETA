@@ -107,7 +107,7 @@ function CommissionTable() {
           <div className="col-md-12 mt-4 table-background">
             <div className="text-history mt-2">{t("withdrawHistory")}</div>
             <div className="table-responsive mt-3 mb-3">
-              <table className="table text-center  ">
+              <table className="table text-center  table-bordered">
                 <thead className="">
                   <tr>
                     <th scope="col">No.</th>

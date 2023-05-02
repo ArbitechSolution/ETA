@@ -13,7 +13,7 @@
     "round":"Round",
     "currentPrice":"Current price",
     "etaBalance":"ETA Balance",
-    "const":"Cost",
+    "cost":"Cost",
     "buyEta":"Buy ETA",
     "commission":"Commission",
     "referral":"Referral",
@@ -36,5 +36,7 @@
     "USDTEarned":"USDT Earned",
     "USDACEEarned":"USDACE Earned",
     "txid":"TXID",
-    "txSuccess":"Transaction Successful" 
+    "txSuccess":"Transaction Successful",
+    "buyEtausingUSDT":"Buy ETA using USDT",
+    "buyEtausingUSDACE":"Buy ETA using USDACE" 
 }

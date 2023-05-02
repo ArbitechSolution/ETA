@@ -1,4 +1,4 @@
-export const contractAddress = "0x0F952EADB372509421E7F7B0cA4d90556CDd9d32";
+export const contractAddress = "0x736BcF960BFAc3DB4d66c9Cc601B32617bD310D5";
 export const contractAddressAbi = [{
 	"inputs": [],
 	"stateMutability": "nonpayable",
@@ -147,7 +147,7 @@ export const contractAddressAbi = [{
 	"type": "function"
 }, {
 	"inputs": [],
-	"name": "USDACEToken",
+	"name": "USDACE$Token",
 	"outputs": [{
 		"internalType": "contract IERC20",
 		"name": "",
