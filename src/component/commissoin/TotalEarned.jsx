@@ -63,7 +63,7 @@ const TotalEarned = () => {
                     <tr>
                       {/* <th scope="col">{t("address")}</th> */}
                       <th scope="col">{t("USDT")}</th>
-                      <th scope="col">{t("USDACE")}</th>
+                      <th scope="col">{t("USDACE")}$</th>
                     </tr>
                   </thead>
                   <tbody>

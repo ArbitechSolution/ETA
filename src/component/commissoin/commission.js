@@ -228,7 +228,7 @@ function Commission() {
                     </div>
                     <div className="col-md-10 col-10 box-backgorund mb-3">
                       <div className="d-flex justify-content-between">
-                        <div className="p-2 text-unit">USDACE</div>
+                        <div className="p-2 text-unit">USDACE$</div>
                         <div className="p-2 text-value  ">
                           {commissionInfo[1]}
                         </div>

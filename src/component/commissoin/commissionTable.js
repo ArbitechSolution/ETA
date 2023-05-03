@@ -15,7 +15,7 @@ function CommissionTable() {
   const [widthrawData, setWidthrawData] = useState([]);
   const [totalUSDTEarn, setTotalUSDTEarn] = useState(0);
   const [commissionHistory, setCommissionHistory] = useState([]);
-  let {acc} = useSelector((state) => state.connect);
+  let { acc } = useSelector((state) => state.connect);
 
   // Total commission EARNED
   const totalCommissionEarn = async () => {
@@ -59,10 +59,10 @@ function CommissionTable() {
         );
         let count = await contract.methods.w_count(acc).call();
         console.log("Count=", count);
-        let widthrawDetails= [];
+        let widthrawDetails = [];
 
         for (let i = 0; i < count; i++) {
-          let obj = {}
+          let obj = {};
           let usdt = await contract.methods
             .withdrawHistoryOfUSDT(acc, i)
             .call();
@@ -70,15 +70,13 @@ function CommissionTable() {
           let usAce = await contract.methods
             .withdrawHistoryOfUSDACE(acc, i)
             .call();
-            let time = await contract.methods
-            .withdrawHistoryTime(acc, i)
-            .call();
-            obj.usdt = Number(web3.utils.fromWei(usdt))
-            obj.usAce = Number(web3.utils.fromWei(usAce));
-            // obj.date = new Date(time *1000).toLocaleDateString()
-            obj.txId = acc;
-            widthrawDetails.push(obj)
-          }
+          let time = await contract.methods.withdrawHistoryTime(acc, i).call();
+          obj.usdt = Number(web3.utils.fromWei(usdt));
+          obj.usAce = Number(web3.utils.fromWei(usAce));
+          // obj.date = new Date(time *1000).toLocaleDateString()
+          obj.txId = acc;
+          widthrawDetails.push(obj);
+        }
         setWidthrawData(widthrawDetails);
       }
     } catch (e) {
@@ -96,9 +94,6 @@ function CommissionTable() {
   //   type: item.type[index],
   //   amount: item.index,
   // }));
-  
-
-
 
   return (
     <div className="background_Pic mt-2">
@@ -112,7 +107,7 @@ function CommissionTable() {
                   <tr>
                     <th scope="col">No.</th>
                     <th scope="col">USDT</th>
-                    <th scope="col">USDACE</th>
+                    <th scope="col">USDACE$</th>
                     <th scope="col">{t("txid")}</th>
                   </tr>
                 </thead>
@@ -120,15 +115,18 @@ function CommissionTable() {
                   {widthrawData.map((data, index) => {
                     return (
                       <tr key={index}>
-                        <td scope="row">{index+1}</td>
+                        <td scope="row">{index + 1}</td>
                         <td>${data.usdt}</td>
                         <td>${data.usAce}</td>
-                        <td>{data.txId.substring(0, 3) + "..." + data.txId.substring(data.txId.length - 3)}</td>
+                        <td>
+                          {data.txId.substring(0, 3) +
+                            "..." +
+                            data.txId.substring(data.txId.length - 3)}
+                        </td>
                         {/* <td>{data.txId}</td> */}
                       </tr>
                     );
                   })}
-
                 </tbody>
               </table>
             </div>

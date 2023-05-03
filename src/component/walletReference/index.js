@@ -176,7 +176,14 @@ function WalletRef() {
                 </div>
                 <div className=" col-lg-2 col-md-2 col-2">
                   <h4 className="p-3 text-end text-white">
-                    <RefreshIcon />
+                    <button
+                      className="btn btn_reload"
+                      onClick={() => {
+                        window.location.reload();
+                      }}
+                    >
+                      <RefreshIcon />
+                    </button>
                   </h4>
                 </div>
               </div>
