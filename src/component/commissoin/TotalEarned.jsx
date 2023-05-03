@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 import { useTranslation } from "react-i18next";
 
 const TotalEarned = () => {
@@ -14,7 +14,7 @@ const TotalEarned = () => {
     },
   ]);
   const [totalCommEarn, setTotalCommEarn] = useState(0);
-  const {acc} = useSelector((state) => state.connect);
+  const { acc } = useSelector((state) => state.connect);
 
   useEffect(() => {
     const getTotalCommEarn = async () => {
@@ -61,16 +61,16 @@ const TotalEarned = () => {
                 <Table className="table text-center" responsive="sm">
                   <thead>
                     <tr>
-                      <th scope="col">{t("address")}</th>
-                      <th scope="col">{t("USDTEarned")}</th>
-                      <th scope="col">{t("USDACEEarned")}</th>
+                      {/* <th scope="col">{t("address")}</th> */}
+                      <th scope="col">{t("USDT")}</th>
+                      <th scope="col">{t("USDACE")}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {commissionHistory.map((data, index) => {
                       return (
                         <tr key={index}>
-                          <td>{acc}</td>
+                          {/* <td>{acc}</td> */}
                           <td>${data.usdtValue}</td>
                           <td>${data.usdaceValue}</td>
                         </tr>

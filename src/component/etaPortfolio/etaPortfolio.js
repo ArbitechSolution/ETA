@@ -12,8 +12,8 @@ function EtaPortfolio() {
   const [roundNumber, setRoundNumber] = useState(0);
   const [spentUsd, setSpentUsd] = useState(0);
   const [receivedUsdt, setReceivedUsdt] = useState(0);
-  const [etaBal, setEtaBal] = useState(0)
-  let {acc} = useSelector((state) => state.connect);
+  const [etaBal, setEtaBal] = useState(0);
+  let { acc } = useSelector((state) => state.connect);
   const usdSpend = async () => {
     const web3 = window.web3;
     try {
@@ -30,8 +30,10 @@ function EtaPortfolio() {
           contractAddress
         );
         let ceheckBalance = await contract.methods.checkbalance(acc).call();
-        ceheckBalance = Number(web3.utils.fromWei(ceheckBalance)).toLocaleString();
-        setEtaBal(ceheckBalance)
+        ceheckBalance = Number(
+          web3.utils.fromWei(ceheckBalance)
+        ).toLocaleString();
+        setEtaBal(ceheckBalance);
         let totalUsd = await contract.methods.totalUSDTSpent(acc).call();
         totalUsd = Number(web3.utils.fromWei(totalUsd)).toLocaleString();
         setSpentUsd(totalUsd);
@@ -58,8 +60,10 @@ function EtaPortfolio() {
         let totalusdtReceived = await contract.methods
           .TotalUSDTEarned(acc)
           .call();
-          console.log("totalusdtReceived", totalusdtReceived);
-        totalusdtReceived = Number(web3.utils.fromWei(totalusdtReceived)).toLocaleString();
+        console.log("totalusdtReceived", totalusdtReceived);
+        totalusdtReceived = Number(
+          web3.utils.fromWei(totalusdtReceived)
+        ).toLocaleString();
         setReceivedUsdt(totalusdtReceived);
       }
     } catch (e) {
@@ -108,17 +112,21 @@ function EtaPortfolio() {
       <div className="row d-flex justify-content-between mt-3">
         <div className="col-md-3 col-12 col-12 table-background mobile-space ">
           <div className=" text-value text-uppercase text-center p-2">
-            {t("totlaEtaPurchased")}<br/>{etaBal}
+            {t("totlaEtaPurchased")}
+            <br />
+            {etaBal}
           </div>
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-value text-uppercase text-center p-2">
-            {t("totalUsdSpen")}<br/>${spentUsd}
+            {t("totalUsdSpen")}
+            <br />${spentUsd}
           </div>
         </div>
         <div className="col-md-3 col-12 table-background mobile-space">
           <div className=" text-value text-uppercase text-center p-2">
-          {t("totalUsdtEarned")}<br/>${receivedUsdt}
+            {t("totalUsdtEarned")}
+            <br />${receivedUsdt}
           </div>
         </div>
       </div>

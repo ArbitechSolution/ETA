@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./wallet.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import {FiCopy} from "react-icons/fi"
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { FiCopy } from "react-icons/fi";
 // import { connectionAction } from "../../Redux/connection/actions";
 import { contractAddress, contractAddressAbi } from "../utils/contractaddress";
 import { useTranslation } from "react-i18next";
@@ -11,7 +12,7 @@ function WalletRef() {
   const [ref, setRef] = useState("0x000000000000000000000000");
   const [refLink, setRefLink] = useState(`${window.location.href}`);
   const [checkDeposit, setCheckDeposit] = useState(false);
-  let {acc, isWalletConnect} = useSelector((state) => state.connect);
+  let { acc, isWalletConnect } = useSelector((state) => state.connect);
 
   const refaddress = async () => {
     const web3 = window.web3;
@@ -129,7 +130,7 @@ function WalletRef() {
           contractAddress
         );
         let defaultReferral = await contract.methods.defaultRefer().call();
-        let {referrer} = await contract.methods.userInfo(acc).call();
+        let { referrer } = await contract.methods.userInfo(acc).call();
         if (referrer != "0x0000000000000000000000000000000000000000") {
           toast.error("You are already register");
         } else if (ref === defaultReferral) {
@@ -163,31 +164,41 @@ function WalletRef() {
           <div className="row  gap-3">
             <div className="col-md-12 col-12  input-box">
               <div className="row ">
-                <div className="col-lg-4 col-md-5 col-12  ">
+                <div className="col-lg-3 col-md-3 col-2  ">
                   <h4 className="text-heading p-3 ">{t("walletAddress")}:</h4>
                 </div>
-                <div className=" col-lg-8 col-md-7 col-12  ">
-                  <h4 className="text-address p-3 "> {isWalletConnect ? acc : t("connectWallet")}</h4>
+                <div className=" col-lg-7 col-md-7 col-8  ">
+                  <h4 className="text-address p-3 ">
+                    {isWalletConnect
+                      ? acc.slice(0, 25) + "..."
+                      : t("connectWallet")}
+                  </h4>
                 </div>
-                {/* 
-                <p className="text-address p-3">
-                 
-                </p> */}
+                <div className=" col-lg-2 col-md-2 col-2">
+                  <h4 className="p-3 text-end text-white">
+                    <RefreshIcon />
+                  </h4>
+                </div>
               </div>
             </div>
             <div className="col-md-12 col-12  input-box">
               <div className="row  ">
-                <div className="col-lg-3 col-md-3 col-12">
+                <div className="col-lg-3 col-md-3 col-2">
                   <h4 className="text-heading p-3 ">{t("referralLink")}:</h4>
                 </div>
-                <div className="col-lg-7 col-md-7 col-10 ">
-                  <h4 className="text-address p-3 ">{refLink}</h4>
+                <div className="col-lg-7 col-md-7 col-8 ">
+                  <h4 className="text-address p-3 ">
+                    {refLink.slice(0, 50) + "..."}
+                  </h4>
                 </div>
-                <div className="col-lg-2 col-md-2 col-2" 
-                onClick={()=>{navigator.clipboard.writeText(refLink)}}
+                <div
+                  className="col-lg-2 col-md-2 col-2 "
+                  onClick={() => {
+                    navigator.clipboard.writeText(refLink);
+                  }}
                 >
-                  <h4 className="p-3 text-light">
-                <FiCopy/>
+                  <h4 className="p-3 text-end text-white">
+                    <FiCopy />
                   </h4>
                 </div>
               </div>

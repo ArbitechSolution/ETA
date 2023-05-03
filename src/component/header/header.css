@@ -1,16 +1,18 @@
 .btn-Connect {
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 15px;
   /* identical to box height */
   color: #ffffff;
-  background: #33A8DF;
+  /* background: #33A8DF; */
+  background: #d4af37;
+  color: #ffffff;
   border-radius: 5px;
 }
 .btn-Connect:hover {
-  color: #33A8DF;
-  border: 1px solid #33A8DF;
+  color: #d4af37;
+  border: 1px solid #d4af37;
 }
 .nav-link {
   font-family: "Poppins";
@@ -20,21 +22,21 @@
   color: #fff;
 }
 .nav-link:hover {
-  color:#33A8DF;
+  color: #33a8df;
   text-transform: capitalize;
 }
 
-.mobile-connect-btn{
+.mobile-connect-btn {
   display: none;
 }
-.lp-connect-btn{
+.lp-connect-btn {
   display: block;
 }
-@media only screen and (min-width: 280px) and (max-width: 768px) { 
-.mobile-connect-btn{
-  display: block;
-}
-.lp-connect-btn{
-  display: none;
-}
+@media only screen and (min-width: 280px) and (max-width: 768px) {
+  .mobile-connect-btn {
+    display: block;
+  }
+  .lp-connect-btn {
+    display: none;
+  }
 }

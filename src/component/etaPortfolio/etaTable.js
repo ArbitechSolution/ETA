@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../paginations/pagination";
 import { useSelector } from "react-redux";
-import { contractAddressAbi, contractAddress } from "../utils/contractaddress"
+import { contractAddressAbi, contractAddress } from "../utils/contractaddress";
 import { useTranslation } from "react-i18next";
 
 function EtaTable() {
@@ -11,7 +11,7 @@ function EtaTable() {
   const [priceOrder, setPriceOrder] = useState([]);
   const [roundNumber, setRoundNumber] = useState(null);
 
-  let shouldLog = useRef(true)
+  let shouldLog = useRef(true);
   let currentBlock = 50;
   useEffect(() => {
     if (shouldLog.current) {
@@ -19,61 +19,88 @@ function EtaTable() {
       const firstPageIndex = (currentPage - 1) * PageSize;
       const lastPageIndex = firstPageIndex + PageSize;
     }
-  }, [currentPage])
+  }, [currentPage]);
   let { acc, isWalletConnect } = useSelector((state) => state.connect);
-  let [totalRound, setTotalRound] = useState(null)
+  // var acc = "0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365";
+  let [totalRound, setTotalRound] = useState(null);
   const getRound = async () => {
     try {
-      if (acc != "No Wallet" && acc != "Wrong Network" && acc != "Connect Wallet") {
+      if (
+        acc != "No Wallet" &&
+        acc != "Wrong Network" &&
+        acc != "Connect Wallet"
+      ) {
         const web3 = window.web3;
-        const contract = new web3.eth.Contract(contractAddressAbi, contractAddress);
-        const round = await contract.methods.round().call()
+        const contract = new web3.eth.Contract(
+          contractAddressAbi,
+          contractAddress
+        );
+        const round = await contract.methods.round().call();
         setTotalRound(Number(round) + 1);
       }
     } catch (error) {
       console.error("error while get round", error);
     }
-  }
+  };
   useEffect(() => {
-    getRound()
-  }, [totalRound, isWalletConnect])
-  const [roundDetail, setRoundDetail] = useState([])
-  let [loadData, setIsLoadData] = useState(true)
+    getRound();
+  }, [totalRound, isWalletConnect]);
+  const [roundDetail, setRoundDetail] = useState([]);
+  let [loadData, setIsLoadData] = useState(true);
   const getRoundDetial = async () => {
     try {
-      if (acc != "No Wallet" && acc != "Wrong Network" && acc != "Connect Wallet") {
-        setIsLoadData(true)
+      if (
+        acc != "No Wallet" &&
+        acc != "Wrong Network" &&
+        acc != "Connect Wallet"
+      ) {
+        setIsLoadData(true);
         const web3 = window.web3;
-        const contract = new web3.eth.Contract(contractAddressAbi, contractAddress);
-        const countSell = await contract.methods.countSell(acc, currentPage - 1).call();
-        let arr = []
+        const contract = new web3.eth.Contract(
+          contractAddressAbi,
+          contractAddress
+        );
+        const countSell = await contract.methods
+          .countSell(acc, currentPage - 1)
+          .call();
+        let arr = [];
         for (let index = 0; index < countSell; index++) {
-          let obj = {}
-          let userSellToken = await contract.methods.userSellToken(acc, currentPage - 1, index).call()
+          let obj = {};
+          let userSellToken = await contract.methods
+            .userSellToken(acc, currentPage - 1, index)
+            .call();
           if (userSellToken > 0) {
-            let userSellPrice = await contract.methods.userSellPrice(acc, currentPage - 1, index).call()
+            let userSellPrice = await contract.methods
+              .userSellPrice(acc, currentPage - 1, index)
+              .call();
             obj.price = web3.utils.fromWei(userSellPrice);
             obj.unit = web3.utils.fromWei(userSellToken);
-            obj.totalSpend = web3.utils.fromWei(userSellPrice) * web3.utils.fromWei(userSellToken);
+            obj.totalSpend =
+              web3.utils.fromWei(userSellPrice) *
+              web3.utils.fromWei(userSellToken);
             obj.txid = acc;
-            arr.push(obj)
+            arr.push(obj);
           }
         }
-        setIsLoadData(false)
-        setRoundDetail(arr)
+        setIsLoadData(false);
+        setRoundDetail(arr);
       }
     } catch (error) {
       console.error("error while get round detail", error);
     }
-  }
+  };
   useEffect(() => {
-    getRoundDetial()
-  }, [isWalletConnect, currentPage])
-  let [isLoding, setIsLoading] = useState(true)
+    getRoundDetial();
+  }, [isWalletConnect, currentPage]);
+  let [isLoding, setIsLoading] = useState(true);
   const priceOrderData = async () => {
     try {
-      if (acc != "No Wallet" && acc != "Wrong Network" && acc != "Connect Wallet") {
-        setIsLoading(true)
+      if (
+        acc != "No Wallet" &&
+        acc != "Wrong Network" &&
+        acc != "Connect Wallet"
+      ) {
+        setIsLoading(true);
         const web3 = window.web3;
         let contract = new web3.eth.Contract(
           contractAddressAbi,
@@ -82,78 +109,84 @@ function EtaTable() {
         let roundNo = await contract.methods.round().call();
         console.log("token", roundNo);
         let newdata = [];
-        for (let index = 0; index < roundNo +1; index++) {
-        let { 0: token, 1: price } = await contract.methods.countBuyers(acc, index).call();
-       
-        for (let i = 0; i < token.length; i++) {
-          if(token[i] > 0){
-            let obj = {}
-            obj.buytoken = Number(web3.utils.fromWei(token[i]));
-            obj.buytokenprice = Number(web3.utils.fromWei(price[i]))
-            obj.round = roundNo;
-            obj.txId = acc;
-            newdata.push(obj)
+        for (let index = 0; index < roundNo + 1; index++) {
+          let { 0: token, 1: price } = await contract.methods
+            .countBuyers(acc, index)
+            .call();
+
+          for (let i = 0; i < token.length; i++) {
+            if (token[i] > 0) {
+              let obj = {};
+              obj.buytoken = Number(web3.utils.fromWei(token[i]));
+              obj.buytokenprice = Number(web3.utils.fromWei(price[i]));
+              obj.round = roundNo;
+              obj.txId = acc;
+              newdata.push(obj);
+            }
           }
         }
-        }
-        setIsLoading(false)
+        setIsLoading(false);
         setPriceOrder(newdata);
       }
     } catch (e) {
-      setIsLoading(false)
+      setIsLoading(false);
       console.error("Error While Buying Tokens", e);
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     priceOrderData();
-  },[acc, currentPage])
-  
+  }, [acc, currentPage]);
 
   return (
     <div className="background_Pic mt-3 mb-5">
       <div className="container">
-
         <div className="row">
           <div className="col-md-12 table-background">
-        
             <div className="table-responsive mt-2">
-              <table className="table table-bordered" style={{ width: "100%" }} >
+              <table className="table table-bordered" style={{ width: "100%" }}>
                 <thead className="text-center fixed">
                   <tr>
-                    <th scope="col">{t("price")}</th>
-                    <th scope="col">{t("ETAToken")}</th>
-                    <th>{t("round")}</th>
-                    <th>{t("txid")}</th>
+                    <th className="col-3" scope="col">
+                      {t("price")}
+                    </th>
+                    <th className="col-3" scope="col">
+                      {t("ETAToken")}
+                    </th>
+                    <th className="col-3">{t("round")}</th>
+                    <th className="col-3">{t("txid")}</th>
                   </tr>
                 </thead>
-                { isWalletConnect && <tbody className="text-center">
-                  {priceOrder.length > 0 ?priceOrder.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{item.buytokenprice}</td>
-                        <td>{item.buytoken}</td>
-                        <td>{Number(item.round)+1}</td>
-                        <td>{item.txId}</td>
+                {isWalletConnect && (
+                  <tbody className="text-center">
+                    {priceOrder.length > 0 ? (
+                      priceOrder.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{item.buytokenprice}</td>
+                            <td>{item.buytoken}</td>
+                            <td>{Number(item.round) + 1}</td>
+                            <td>{item.txId.slice(0, 8) + "..."}</td>
+                          </tr>
+                        );
+                      })
+                    ) : isLoding ? (
+                      <tr>
+                        <td colSpan={2}>Loading...</td>
                       </tr>
-                    );
-                  })
-                  : isLoding ?
-                  <tr>
-                    <td colSpan={2}>Loading...</td>
-                  </tr>
-                  :
-                  <tr>
-                    <td colSpan={2}>No detail found</td>
-                  </tr>
-                }
-                </tbody>}
-                {
-                  !isWalletConnect && <tbody>
-                    <tr>
-                    <td colSpan={2}>{t("connectWallet")}</td>
-                  </tr>
+                    ) : (
+                      <tr>
+                        <td colSpan={2}>No detail found</td>
+                      </tr>
+                    )}
                   </tbody>
-                }
+                )}
+                {!isWalletConnect && (
+                  <tbody>
+                    <tr>
+                      <td colSpan={2}>{t("connectWallet")}</td>
+                    </tr>
+                  </tbody>
+                )}
               </table>
             </div>
             {/* {isWalletConnect && totalRound != null && <div className='d-flex mt-2'>

@@ -11,33 +11,39 @@ function Header() {
   const connectWallet = () => {
     dispatch(connectionAction());
   };
-  let [lan, setLan] = useState("")
+  let [lan, setLan] = useState("");
   function handleClick(lang) {
     i18n.changeLanguage(lang);
-    setLan(lang)
+    setLan(lang);
   }
   useEffect(() => {
-    setLan(i18n.language)
-  }, [])
+    setLan(i18n.language);
+  }, []);
   return (
     <div style={{ background: "#303493" }}>
       <div className="container">
         <nav className="navbar navbar-expand-lg ">
-          <div className="container-fluid">
+          <div className="container-fluid ">
             <a className="navbar-brand" href="#">
-              <img src={Logo} className="img-fluid" alt="" width={"70px"} />
+              <img
+                src={Logo}
+                className="img-fluid"
+                alt=""
+                width={"90px"}
+                height={"90px"}
+              />
             </a>
             <div className=" mobile-connect-btn">
-                <button className="btn btn-Connect p-2" onClick={connectWallet}>
-                  {acc === "No Wallet"
-                    ? t("connectWallet")
-                    : acc === "Connect Wallet"
-                      ? t("connectWallet")
-                      : acc === "Wrong Network"
-                        ? acc
-                        : acc.substring(0, 3) + "..." + acc.substring(acc.length - 3)}
-                </button>
-              </div>
+              <button className="btn btn-Connect p-2" onClick={connectWallet}>
+                {acc === "No Wallet"
+                  ? t("connectWallet")
+                  : acc === "Connect Wallet"
+                  ? t("connectWallet")
+                  : acc === "Wrong Network"
+                  ? acc
+                  : acc.substring(0, 3) + "..." + acc.substring(acc.length - 3)}
+              </button>
+            </div>
             <button
               className="navbar-toggler"
               type="button"
@@ -48,12 +54,23 @@ function Header() {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon" />
-              
             </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav m-auto mb-2 mb-lg-0 gap-3">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav m-auto mb-2 mb-lg-0 gap-3 ">
                 <li className="nav-item">
-                  <a className="nav-link " aria-current="page" href={i18n.language  == "en"  ?  "/Estrella Tera (ETA)  v5.1.pdf" : "/兆星平台 ETA 股权计划 v5.1.pdf"} download>
+                  <a
+                    className="nav-link "
+                    aria-current="page"
+                    href={
+                      i18n.language == "en"
+                        ? "/Estrella Tera (ETA)  v5.1.pdf"
+                        : "/兆星平台 ETA 股权计划 v5.1.pdf"
+                    }
+                    download
+                  >
                     {t("nav_first_link")}
                   </a>
                 </li>
@@ -68,37 +85,52 @@ function Header() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  {
-                    i18n.language  == "en" ? 
+                  {i18n.language == "en" ? (
                     <a className="nav-link ">Telegram</a>
-                    :
-                    <a className="nav-link " href="/letsvpn-latest.apk" download>下载快连</a>
-                  }
+                  ) : (
+                    <a
+                      className="nav-link "
+                      href="/letsvpn-latest.apk"
+                      download
+                    >
+                      下载快连
+                    </a>
+                  )}
                 </li>
                 <li className="nav-item">
-                  {
-                    i18n.language  == "en" ? 
+                  {i18n.language == "en" ? (
                     <a className="nav-link ">Discord</a>
-                    :
-                    <a className="nav-link" href="/TokenPocket-pro.apk"  download>下载TP钱包</a>
-                  }
-                  
+                  ) : (
+                    <a
+                      className="nav-link"
+                      href="/TokenPocket-pro.apk"
+                      download
+                    >
+                      下载TP钱包
+                    </a>
+                  )}
                 </li>
                 <li className="nav-item">
                   <a className="nav-link ">{t("nav_sixth_link")}</a>
                 </li>
-                <li className="nav-item nav-link " style={{ background: "#303493" }}>
-                  <select class="form-select text-light" style={{ background: "#303493" }}
+                <li
+                  className="nav-item nav-link "
+                  style={{ background: "#303493" }}
+                >
+                  <select
+                    class="form-select text-light"
+                    style={{ background: "#303493" }}
                     aria-label="Default select example"
                     onChange={(e) => handleClick(e.target.value)}
                     value={lan}
                   >
-                    <option selected value="en">English</option>
+                    <option selected value="en">
+                      English
+                    </option>
                     <option value="chi">Chinese</option>
                     {/* <option value="vi">Vietnam</option>
                     <option value="ms">Malay</option>
                     <option value="sp">Spanish</option> */}
-
                   </select>
                 </li>
               </ul>
@@ -107,10 +139,12 @@ function Header() {
                   {acc === "No Wallet"
                     ? t("connectWallet")
                     : acc === "Connect Wallet"
-                      ? t("connectWallet")
-                      : acc === "Wrong Network"
-                        ? acc
-                        : acc.substring(0, 3) + "..." + acc.substring(acc.length - 3)}
+                    ? t("connectWallet")
+                    : acc === "Wrong Network"
+                    ? acc
+                    : acc.substring(0, 3) +
+                      "..." +
+                      acc.substring(acc.length - 3)}
                 </button>
               </div>
             </div>
