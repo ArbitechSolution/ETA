@@ -418,7 +418,7 @@ function WhatIsEta() {
 						<div className="row  mobile-responsive justify-content-between">
 							<div className="col-md-5 table-background  mt-3">
 								<div className="text-round text-center mt-3">
-									{t('USDT Purchase')}
+									{t('buyEtausingUSDT')}
 								</div>
 								<div className="row d-flex justify-content-center mt-3 mb-3">
 									<div className="col-md-10 col-10 box-backgorund">
@@ -460,7 +460,7 @@ function WhatIsEta() {
 							</div>
 							<div className="col-md-5 table-background  mt-3">
 								<div className="text-round text-center mt-3">
-									{t('USDACE$ Purchase')}
+									{t('buyEtausingUSDACE')}
 								</div>
 								<div className="row d-flex justify-content-center mt-3 mb-3">
 									<div className="col-md-10 col-10 box-backgorund">

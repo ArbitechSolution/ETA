@@ -37,7 +37,7 @@
 	"USDACEEarned": "USDACE Earned",
 	"txid": "TXID",
 	"txSuccess": "Transaction Successful",
-	"buyEtausingUSDT": "Buy ETA using USDT",
-	"buyEtausingUSDACE": "Buy ETA using USDACE",
+	"buyEtausingUSDT": "USDT Purchase",
+	"buyEtausingUSDACE": "USDACE$ Purchase",
 	"withdrawlNotification": "Once withdraw, you will not be able to deposit ETA back to the smart contract"
 }
