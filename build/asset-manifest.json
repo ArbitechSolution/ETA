@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d05ab567.css",
-    "main.js": "/static/js/main.89928fbc.js",
+    "main.css": "/static/css/main.8b9f330e.css",
+    "main.js": "/static/js/main.554a9c8e.js",
     "static/js/787.3038d08b.chunk.js": "/static/js/787.3038d08b.chunk.js",
     "static/media/etawave-01.png": "/static/media/etawave-01.55a88c9f9ae595efd6f1.png",
     "static/media/background-01.svg": "/static/media/background-01.acf46f61e342aff202b4d04e437741ff.svg",
@@ -10,13 +10,13 @@
     "static/media/etaheader.png": "/static/media/etaheader.ce490e72283a49a10a1a.png",
     "index.html": "/index.html",
     "static/media/getFetch.cjs": "/static/media/getFetch.40f37ddea2378391108f.cjs",
-    "static/media/Polygon.svg": "/static/media/Polygon.5a42eb3991e5220c73e91e4f69851942.svg",
-    "main.d05ab567.css.map": "/static/css/main.d05ab567.css.map",
-    "main.89928fbc.js.map": "/static/js/main.89928fbc.js.map",
+    "static/media/Polygon.svg": "/static/media/Polygon.0c3faf52b6c29f8f589f2c9807ad9607.svg",
+    "main.8b9f330e.css.map": "/static/css/main.8b9f330e.css.map",
+    "main.554a9c8e.js.map": "/static/js/main.554a9c8e.js.map",
     "787.3038d08b.chunk.js.map": "/static/js/787.3038d08b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d05ab567.css",
-    "static/js/main.89928fbc.js"
+    "static/css/main.8b9f330e.css",
+    "static/js/main.554a9c8e.js"
   ]
 }

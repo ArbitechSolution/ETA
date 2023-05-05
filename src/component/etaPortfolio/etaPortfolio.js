@@ -13,7 +13,8 @@ function EtaPortfolio() {
 	const [spentUsd, setSpentUsd] = useState(0);
 	const [receivedUsdt, setReceivedUsdt] = useState(0);
 	const [etaBal, setEtaBal] = useState(0);
-	let { acc } = useSelector((state) => state.connect);
+	// let { acc } = useSelector((state) => state.connect);
+	let acc = "0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365"
 	const usdSpend = async () => {
 		const web3 = window.web3;
 		try {
@@ -29,20 +30,20 @@ function EtaPortfolio() {
 					contractAddressAbi,
 					contractAddress
 				);
-				let ceheckBalance = await contract.methods.checkbalance(acc).call();
+				let ceheckBalance = await contract.methods.checkbalance("0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365").call();
 				ceheckBalance = Number(
 					web3.utils.fromWei(ceheckBalance)
 				).toLocaleString();
 				setEtaBal(ceheckBalance);
-				let totalUsd = await contract.methods.totalUSDTSpent(acc).call();
-				let totalUSDAEC = await contract.methods.totalUSDACESpent(acc).call();
+				let totalUsd = await contract.methods.TotalUSDSpent("0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365").call();
+				// let totalUSDAEC = await contract.methods.totalUSDACESpent(acc).call();
 				console.log('totalUsd', totalUsd);
-				console.log('totalUSDAEC', totalUSDAEC);
+				// console.log('totalUSDAEC', totalUSDAEC);
 
 				totalUsd = Number(web3.utils.fromWei(totalUsd)).toLocaleString();
-				totalUSDAEC = Number(web3.utils.fromWei(totalUSDAEC)).toLocaleString();
-				let totalValue = parseFloat(totalUsd) + parseFloat(totalUSDAEC);
-				setSpentUsd(totalValue);
+				// totalUSDAEC = Number(web3.utils.fromWei(totalUSDAEC)).toLocaleString();
+				// let totalValue = parseFloat(totalUsd) + parseFloat(totalUSDAEC);
+				setSpentUsd(totalUsd);
 			}
 		} catch (e) {
 			console.log('Error While Buying Tokens', e);
