@@ -76,7 +76,7 @@ function WalletRef() {
     }
   };
   const handleRegisterReferral = (e) => {
-    setRef(e.target.value);
+    setRef(e);
   };
 
   //Register Link
@@ -261,15 +261,25 @@ function WalletRef() {
                 </div>
               </div>
               <div className="row d-flex justify-content-center ">
-                <input
+                {/* <p
                   className="input-box ps-4 text-wrap text-break"
                   style={{ height: "60px", width: "100%", color: "white" }}
                   value={ref}
                   onChange={(e) => {
                     handleRegisterReferral(e);
                   }}
-                ></input>
-              </div>
+                >{ref} </p> */}
+
+<textarea
+  className="input-box ps-4 text-wrap"
+  style={{ height: "60px", width: "100%", color: "white" }}
+  value={ref}
+  onChange={(e) => {
+    handleRegisterReferral(e.target.value);
+  }}
+>
+  </textarea>
+</div>
               <div className="d-flex justify-content-center mt-3 mb-3">
                 <button
                   className="btn  btn-primary ps-5 pe-5 p-3"

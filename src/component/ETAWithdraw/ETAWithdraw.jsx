@@ -11,6 +11,7 @@ const web3Supply = new Web3('https://bsc-dataseed1.binance.org/');
 const rpcUrl = new Web3('https://data-seed-prebsc-2-s2.binance.org:8545');
 function EtaWithdraw() {
 	const { t, i18n } = useTranslation();
+
 	const [etaAmount, setEtaAmount] = useState(0);
 	const [reinvestAmount, setReinvestAmount] = useState(0);
 	const [etaBal, setEtaBal] = useState(0);
@@ -22,8 +23,14 @@ function EtaWithdraw() {
 		text: `${t('WithdrawETA')}`,
 		isDisable: true,
 	});
-
 	let { acc, isWalletConnect } = useSelector((state) => state.connect);
+	useEffect(() => {
+		if (!isWalletConnect) {
+			setwithdrawBtn({ ...withdrawBtn, text: `${t('WithdrawETA')}` })
+		}else{
+			getEtaToken()
+		}
+	}, [i18n.language])
 
 	const dispatch = useDispatch();
 	const connectWallet = () => {
@@ -59,7 +66,7 @@ function EtaWithdraw() {
 					setEtaAmount(etaWithdrawAmount);
 					setwithdrawBtn({ text: `${t('WithdrawETA')}`, isDisable: false });
 				} else {
-					setwithdrawBtn({ text: 'Insufficient Amount', isDisable: true });
+					setwithdrawBtn({ text: `${t('insufficientAmount')}`, isDisable: true });
 				}
 			}
 		} catch (e) {

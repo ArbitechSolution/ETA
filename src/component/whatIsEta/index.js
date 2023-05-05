@@ -41,6 +41,10 @@ function WhatIsEta() {
 	const connectWallet = () => {
 		dispatch(connectionAction());
 	};
+	useEffect(() => {
+		setUsdtBtn({ ...usdtBtn, text: `${t('buyEta')}` })
+		setUsdaceBtn({ ...usdaceBtn, text: `${t('buyEta')}` })
+	}, [i18n.language])
 	const token = async () => {
 		try {
 			let contract = new web3Supply.eth.Contract(

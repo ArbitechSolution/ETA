@@ -37,8 +37,9 @@
   "USDACEEarned": "总 USDACE",
   "txid": "交易TXID",
   "txSuccess": "交易完成",
-  "buyEtausingUSDT": "USDT购买兆星",
-  "buyEtausingUSDACE": "USDACE购买兆星",
+  "buyEtausingUSDT": "USDT 购买兆星",
+  "buyEtausingUSDACE": "USDACE$ 购买兆星",
   "withdrawlNotification": "温馨提醒，一旦您提现ETA后，您将无法存放ETA回此智能合约中",
-  "IntroducerAddress": "介绍人钱包地址"
+  "IntroducerAddress": "介绍人钱包地址",
+  "insufficientAmount":"金额不足"
 }

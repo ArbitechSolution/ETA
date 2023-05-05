@@ -70,3 +70,14 @@
 .btn-copy:hover {
   background: #303493;
 }
+
+.input-box {
+  white-space: pre-wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .input-box {
+    height: auto;
+    white-space: normal;
+  }
+}
