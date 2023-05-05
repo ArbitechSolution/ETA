@@ -39,5 +39,6 @@
 	"txSuccess": "Transaction Successful",
 	"buyEtausingUSDT": "USDT Purchase",
 	"buyEtausingUSDACE": "USDACE$ Purchase",
-	"withdrawlNotification": "Once withdraw, you will not be able to deposit ETA back to the smart contract"
+	"withdrawlNotification": "Once withdraw, you will not be able to deposit ETA back to the smart contract",
+	"myWalletAddress":"My Wallet Address"
 }

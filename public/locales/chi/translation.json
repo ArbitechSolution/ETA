@@ -39,5 +39,6 @@
 	"txSuccess": "交易完成",
 	"buyEtausingUSDT": "USDT购买兆星",
 	"buyEtausingUSDACE": "USDACE$购买兆星",
-	"withdrawlNotification": "温馨提醒，一旦您提现ETA后，您将无法存放ETA回此智能合约中"
+	"withdrawlNotification": "温馨提醒，一旦您提现ETA后，您将无法存放ETA回此智能合约中",
+	"myWalletAddress":"我的钱包地址"
 }
