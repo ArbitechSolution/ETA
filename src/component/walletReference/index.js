@@ -162,44 +162,80 @@ function WalletRef() {
       <div className="row d-flex justify-content-center">
         <div className="col-lg-8 col-md-12">
           <div className="row  gap-3">
+            {/* <div className=" ">
+              <h4 className="text-heading text-center text-dark p-3 ">
+                {t("walletAddress")}
+              </h4>
+            </div> */}
+            <div className="mt-4">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="d-flex justify-content-center">
+                      <div className="p-2 comb_heading">
+                        {t("walletAddress")}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="col-md-12 col-12  input-box">
               <div className="row ">
-                <div className="col-lg-3 col-md-3 col-2  ">
-                  <h4 className="text-heading p-3 ">{t("walletAddress")}:</h4>
-                </div>
-                <div className=" col-lg-7 col-md-7 col-8  ">
-                  <h4 className="text-address p-3 ">
-                    {isWalletConnect
-                      ? acc.slice(0, 25) + "..."
-                      : t("connectWallet")}
+                <div className=" col-lg-9 col-md-9 col-9">
+                  <h4 className="text-address p-3 text-wrap text-break text-truncate">
+                    {isWalletConnect ? acc : t("connectWallet")}
                   </h4>
                 </div>
-                <div className=" col-lg-2 col-md-2 col-2">
+                <div className=" col-lg-3 col-md-3 col-3">
                   <h4 className="p-3 text-end text-white">
-                    <button
+                    <span
                       className="btn btn_reload"
                       onClick={() => {
                         window.location.reload();
                       }}
                     >
                       <RefreshIcon />
-                    </button>
+                    </span>
                   </h4>
+                </div>
+              </div>
+            </div>
+            <div className="mt-2">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12 ">
+                    <div className="d-flex justify-content-center">
+                      <div className="px-2  comb_heading">
+                        {t("referralLink")}
+                      </div>{" "}
+                      <div
+                        // className="col-lg-3 col-md-3 col-3 "
+                        onClick={() => {
+                          navigator.clipboard.writeText(refLink);
+                        }}
+                      >
+                        <h4 className="btn  btn-copy  text-light">
+                          <FiCopy />
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-md-12 col-12  input-box">
               <div className="row  ">
-                <div className="col-lg-3 col-md-3 col-2">
+                {/* <div className="col-lg-3 col-md-3 col-2">
                   <h4 className="text-heading p-3 ">{t("referralLink")}:</h4>
-                </div>
-                <div className="col-lg-7 col-md-7 col-8 ">
-                  <h4 className="text-address p-3 ">
-                    {refLink.slice(0, 50) + "..."}
+                </div> */}
+                <div className="col-lg-12 col-md-12 col-12 ">
+                  <h4 className="text-address p-3 text-wrap text-break text-truncate">
+                    {refLink}
                   </h4>
                 </div>
-                <div
-                  className="col-lg-2 col-md-2 col-2 "
+                {/* <div
+                  className="col-lg-3 col-md-3 col-3 "
                   onClick={() => {
                     navigator.clipboard.writeText(refLink);
                   }}
@@ -207,13 +243,26 @@ function WalletRef() {
                   <h4 className="p-3 text-end text-white">
                     <FiCopy />
                   </h4>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-md-12 col-12  ">
+              <div className="mt-2 mb-2">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="d-flex justify-content-center">
+                        <div className="p-2 comb_heading">
+                          {t("IntroducerAddress")}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="row d-flex justify-content-center ">
                 <input
-                  className="input-box ps-4"
+                  className="input-box ps-4 text-wrap text-break"
                   style={{ height: "60px", width: "100%", color: "white" }}
                   value={ref}
                   onChange={(e) => {

@@ -58,3 +58,15 @@
   background: none;
   color: #ffffff;
 }
+.comb_heading {
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 700;
+  /* background-color: aqua; */
+}
+.btn-copy {
+  background: #303493;
+}
+.btn-copy:hover {
+  background: #303493;
+}
