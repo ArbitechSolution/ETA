@@ -34,15 +34,10 @@ function EtaPortfolio() {
 					web3.utils.fromWei(ceheckBalance)
 				).toLocaleString();
 				setEtaBal(ceheckBalance);
-				let totalUsd = await contract.methods.totalUSDTSpent(acc).call();
-				let totalUSDAEC = await contract.methods.totalUSDACESpent(acc).call();
+				let totalUsd = await contract.methods.TotalUSDSpent(acc).call();
 				console.log('totalUsd', totalUsd);
-				console.log('totalUSDAEC', totalUSDAEC);
-
 				totalUsd = Number(web3.utils.fromWei(totalUsd)).toLocaleString();
-				totalUSDAEC = Number(web3.utils.fromWei(totalUSDAEC)).toLocaleString();
-				let totalValue = parseFloat(totalUsd) + parseFloat(totalUSDAEC);
-				setSpentUsd(totalValue);
+				setSpentUsd(totalUsd);
 			}
 		} catch (e) {
 			console.log('Error While Buying Tokens', e);
