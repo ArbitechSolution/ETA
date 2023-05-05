@@ -35,14 +35,9 @@ function EtaPortfolio() {
 					web3.utils.fromWei(ceheckBalance)
 				).toLocaleString();
 				setEtaBal(ceheckBalance);
-				let totalUsd = await contract.methods.TotalUSDSpent("0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365").call();
-				// let totalUSDAEC = await contract.methods.totalUSDACESpent(acc).call();
+				let totalUsd = await contract.methods.TotalUSDSpent(acc).call();
 				console.log('totalUsd', totalUsd);
-				// console.log('totalUSDAEC', totalUSDAEC);
-
 				totalUsd = Number(web3.utils.fromWei(totalUsd)).toLocaleString();
-				// totalUSDAEC = Number(web3.utils.fromWei(totalUSDAEC)).toLocaleString();
-				// let totalValue = parseFloat(totalUsd) + parseFloat(totalUSDAEC);
 				setSpentUsd(totalUsd);
 			}
 		} catch (e) {
