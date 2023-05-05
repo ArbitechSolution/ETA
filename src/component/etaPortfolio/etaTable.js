@@ -153,7 +153,7 @@ function EtaTable() {
                       {t("ETAToken")}
                     </th>
                     <th className="col-3">{t("round")}</th>
-                    <th className="col-3">{t("txid")}</th>
+                    {/* <th className="col-3">{t("txid")}</th> */}
                   </tr>
                 </thead>
                 {isWalletConnect && (
@@ -165,7 +165,7 @@ function EtaTable() {
                             <td>{item.buytokenprice}</td>
                             <td>{item.buytoken}</td>
                             <td>{Number(item.round) + 1}</td>
-                            <td>{item.txId.slice(0, 8) + "..."}</td>
+                            {/* <td>{item.txId.slice(0, 8) + "..."}</td> */}
                           </tr>
                         );
                       })

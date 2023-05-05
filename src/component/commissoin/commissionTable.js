@@ -105,10 +105,16 @@ function CommissionTable() {
               <table className="table text-center  table-bordered">
                 <thead className="">
                   <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">USDT</th>
-                    <th scope="col">USDACE$</th>
-                    <th scope="col">{t("txid")}</th>
+                    <th className="col-4" scope="col">
+                      No.
+                    </th>
+                    <th className="col-4" scope="col">
+                      USDT
+                    </th>
+                    <th className="col-4" scope="col">
+                      USDACE$
+                    </th>
+                    {/* <th scope="col">{t("txid")}</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -118,11 +124,11 @@ function CommissionTable() {
                         <td scope="row">{index + 1}</td>
                         <td>${data.usdt}</td>
                         <td>${data.usAce}</td>
-                        <td>
+                        {/* <td>
                           {data.txId.substring(0, 3) +
                             "..." +
                             data.txId.substring(data.txId.length - 3)}
-                        </td>
+                        </td> */}
                         {/* <td>{data.txId}</td> */}
                       </tr>
                     );
