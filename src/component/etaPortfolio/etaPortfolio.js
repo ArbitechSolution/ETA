@@ -13,8 +13,8 @@ function EtaPortfolio() {
 	const [spentUsd, setSpentUsd] = useState(0);
 	const [receivedUsdt, setReceivedUsdt] = useState(0);
 	const [etaBal, setEtaBal] = useState(0);
-	// let { acc } = useSelector((state) => state.connect);
-	let acc = "0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365"
+	let { acc } = useSelector((state) => state.connect);
+	// let acc = "0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365"
 	const usdSpend = async () => {
 		const web3 = window.web3;
 		try {
@@ -30,7 +30,7 @@ function EtaPortfolio() {
 					contractAddressAbi,
 					contractAddress
 				);
-				let ceheckBalance = await contract.methods.checkbalance("0x70C0Fb7462F6658A9d4D7d6Af2d2e0C1fD8CE365").call();
+				let ceheckBalance = await contract.methods.checkbalance(acc).call();
 				ceheckBalance = Number(
 					web3.utils.fromWei(ceheckBalance)
 				).toLocaleString();
