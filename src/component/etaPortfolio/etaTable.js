@@ -107,7 +107,6 @@ function EtaTable() {
           contractAddress
         );
         let roundNo = await contract.methods.round().call();
-        console.log("token", roundNo);
         let newdata = [];
         for (let index = 0; index < roundNo + 1; index++) {
           let { 0: token, 1: price } = await contract.methods
@@ -119,14 +118,14 @@ function EtaTable() {
               let obj = {};
               obj.buytoken = Number(web3.utils.fromWei(token[i]));
               obj.buytokenprice = Number(web3.utils.fromWei(price[i]));
-              obj.round = roundNo;
+              obj.round = index;
               obj.txId = acc;
               newdata.push(obj);
             }
           }
         }
         setIsLoading(false);
-        setPriceOrder(newdata);
+        setPriceOrder(newdata.reverse());
       }
     } catch (e) {
       setIsLoading(false);
@@ -189,88 +188,10 @@ function EtaTable() {
                 )}
               </table>
             </div>
-            {/* {isWalletConnect && totalRound != null && <div className='d-flex mt-2'>
-          <div className='col-md-8 ms-auto'>
-            <Pagination
-              className="pagination-bar justify-content-end"
-              currentPage={currentPage}
-              totalCount={totalRound}
-              onPageChange={page => {
-                setCurrentPage(page)
-              }}
-            />
-          </div>
-        </div>} */}
-            {/* <div className="text-history mt-2 text-uppercase">Round No {currentPage}</div> */}
-            {/* <div className="table-responsive mt-3 mb-3">
-              <table className="table text-center  ">
-                <thead className="">
-                  <tr>
-                    <th scope="col">Price</th>
-                    <th scope="col">ETA Tokens</th>
-                    <th scope="col">Total USD Spend</th>
-                    <th scope="col">Address</th>
-                  </tr>
-                </thead>
-                {isWalletConnect &&
-                  <tbody>
-                    {roundDetail.length > 0 ? roundDetail.map((item, index) => {
-                      return (
-                        <>
-                          <tr key={index}>
-                            <td scope="row">${item.price}</td>
-                            <td>{item.unit}</td>
-                            <td className=""> ${Number(item.totalSpend).toLocaleString()}</td>
-                            <td>
-                              <a style={{ textDecoration: "none" }} target="blank" href={`https://testnet.bscscan.com/address/${item.txid}`}>
-                                {item.txid}
-                              </a>
-                            </td>
-                          </tr>
-                        </>
-                      );
-                    })
-                      : loadData && isWalletConnect ? <tr>
-                        <td colSpan={4}>
-                          Loading...
-                        </td>
-                      </tr>
-                        :
-                        <tr>
-                          <td colSpan={4}>
-                            No detail in this round
-                          </td>
-                        </tr>
-                    }
-                  </tbody>}
-                {
-                  !isWalletConnect &&
-                  <tbody>
-                    <tr>
-                      <td colSpan={4}>
-                        Connect wallet
-                      </td>
-                    </tr>
-                  </tbody>
-                }
-              </table>
-            </div> */}
+            
           </div>
         </div>
-        {/* {isWalletConnect && totalRound != null && <div className='d-flex mt-2'>
-          <div className='col-md-8 ms-auto'>
-            <Pagination
-              className="pagination-bar justify-content-end"
-              currentPage={currentPage}
-              totalCount={totalRound}
-              onPageChange={page => {
-                console.log("page", page);
-                shouldLog.current = true;
-                setCurrentPage(page)
-              }}
-            />
-          </div>
-        </div>} */}
+        
       </div>
     </div>
   );

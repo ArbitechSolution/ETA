@@ -120,7 +120,7 @@ function Commission() {
         if (commissionInfo[0] == 0 && commissionInfo[1] == 0) {
           toast.info("Your Commission is 0");
         } else {
-          let maxWithdrwa = await contract.methods.maxWithdrwa(acc).call();
+          let maxWithdrwa = await contract.methods.maxWithdraw(acc).call();
           maxWithdrwa = Number(web3.utils.fromWei(maxWithdrwa));
           let { 0: usdt } = await contract.methods.TotalClaimed(acc).call();
           let totalUSDTCommission = await contract.methods

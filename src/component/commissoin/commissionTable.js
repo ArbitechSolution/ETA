@@ -66,7 +66,6 @@ function CommissionTable() {
           let usdt = await contract.methods
             .withdrawHistoryOfUSDT(acc, i)
             .call();
-          console.log("USDT=", usdt);
           let usAce = await contract.methods
             .withdrawHistoryOfUSDACE(acc, i)
             .call();

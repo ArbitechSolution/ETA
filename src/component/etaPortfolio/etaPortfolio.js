@@ -59,14 +59,21 @@ function EtaPortfolio() {
 					contractAddressAbi,
 					contractAddress
 				);
-				let totalusdtReceived = await contract.methods
-					.TotalUSDTEarned(acc)
-					.call();
-				console.log('totalusdtReceived', totalusdtReceived);
-				totalusdtReceived = Number(
-					web3.utils.fromWei(totalusdtReceived)
-				).toLocaleString();
-				setReceivedUsdt(0);
+				const round = contract.methods.round().call();
+				let sum = 0
+				for (let index = 2; index <= round; index++) {
+					for (let j = 0; j <= index - 2; j++) {
+						let countSell = await contract.methods.countSell(acc, j).call()
+						for (let i = 0; i < countSell; i++) {
+							let buyToken = await contract.methods.buyerSellTotalToken(acc, index, j, i).call();
+							let price = await contract.methods.userSellPrice(acc, j, i).call();
+							let val = Number(web3.utils.fromWei(buyToken)) * Number(web3.utils.fromWei(price))
+							sum = sum + val;
+						}
+					}
+
+				}
+				setReceivedUsdt((sum * 70) / 100)
 			}
 		} catch (e) {
 			console.log('Error While Buying Tokens', e);

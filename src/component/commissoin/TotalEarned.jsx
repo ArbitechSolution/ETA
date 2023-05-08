@@ -31,19 +31,25 @@ const TotalEarned = () => {
             contractAddressAbi,
             contractAddress
           );
-          const commissionHistoryUSDT = await contract.methods
-            .totalUSDTCommission(acc)
-            .call();
-          const commissionHistoryUSACE = await contract.methods
-            .totalUSDACECommission(acc)
-            .call();
-          const history = Object.keys(commissionHistory).map((key, index) => ({
-            txid: key,
-            usdtValue: web3.utils.fromWei(commissionHistoryUSDT, "ether"),
-            usdaceValue: web3.utils.fromWei(commissionHistoryUSACE, "ether"),
-          }));
-          setCommissionHistory(history);
-          console.log("Commission history:", history);
+          let totalEarned = await contract.methods.totalEarned(acc).call()
+          console.log("totalEarned", totalEarned._TotalUSDACEEarned);
+          setCommissionHistory({
+            usdtValue: web3.utils.fromWei(totalEarned._TotalUSDTEarned),
+      usdaceValue: web3.utils.fromWei(totalEarned._TotalUSDACEEarned),
+          })
+          // const commissionHistoryUSDT = await contract.methods
+          //   .totalUSDTCommission(acc)
+          //   .call();
+          // const commissionHistoryUSACE = await contract.methods
+          //   .totalUSDACECommission(acc)
+          //   .call();
+          // const history = Object.keys(commissionHistory).map((key, index) => ({
+          //   txid: key,
+          //   usdtValue: web3.utils.fromWei(commissionHistoryUSDT, "ether"),
+          //   usdaceValue: web3.utils.fromWei(commissionHistoryUSACE, "ether"),
+          // }));
+          // setCommissionHistory(history);
+          // console.log("Commission history:", history);
         }
       } catch (e) {
         console.log("Error", e);
@@ -67,15 +73,15 @@ const TotalEarned = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {commissionHistory.map((data, index) => {
-                      return (
-                        <tr key={index}>
+                    {/* {commissionHistory.map((data, index) => {
+                      return ( */}
+                        <tr >
                           {/* <td>{acc}</td> */}
-                          <td>${data.usdtValue}</td>
-                          <td>${data.usdaceValue}</td>
+                          <td>${commissionHistory.usdtValue}</td>
+                          <td>${commissionHistory.usdaceValue}</td>
                         </tr>
-                      );
-                    })}
+                      {/* );
+                    })} */}
                   </tbody>
                 </Table>
               </div>
